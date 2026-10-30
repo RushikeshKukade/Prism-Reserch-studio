@@ -7,7 +7,7 @@ An India-only, evidence-first market and research prototype covering **200 India
 ## Quick start and dependencies
 
 - Python **3.10 or newer** and a modern browser.
-- **No third-party Python packages and no API keys.** `requirements.txt` intentionally has no package requirements.
+- **No third-party Python packages. The core workflow needs no API key.** `requirements.txt` intentionally has no package requirements.
 - Internet access is required to refresh public market data or open source links. The bundled snapshot and test suite work offline.
 - Git is optional for downloading/cloning; it is not required to run the downloaded project.
 
@@ -29,6 +29,53 @@ On Windows, use `py` instead of `python` if needed. No database, Node.js, paid d
 
 ![Research Studio preview](docs/research-studio.jpg)
 
+## Optional OpenAI research brief
+
+After a supported research answer, click **Generate brief** for a summary, cited
+observations, limitations and follow-up research questions. The original financial
+table and calculations remain visible. The brief is AI commentary requiring review;
+checking source IDs does not prove the claims are supported by those sources.
+
+Setup:
+1. Copy the blank .env.example file to .env in this project folder.
+2. Add your OpenAI API key to OPENAI_API_KEY in .env using a local editor.
+3. Start or restart the app. Ask a supported question, then click Generate brief.
+
+OPENAI_MODEL defaults to gpt-4.1-mini and can be changed in .env. Process environment
+variables override file values. No dotenv package is required. The browser never
+receives the key. The status badge confirms configuration only, not model access,
+billing or successful live execution.
+
+**Key protection:** .env and .env.* are ignored by Git; only the intentionally blank
+.env.example is allowed. Never paste a key into source code, chat, browser fields,
+screenshots or a public repository. The local HTTP server does not expose .env.
+Gitignore does not remove a key that was previously committed.
+
+The button sends the question and its server-retrieved evidence to OpenAI's Responses
+API. It does not send the entire market dataset. Requests use store=false, no tools,
+a 25-second timeout and a 1,200-output-token cap. Store=false is not a claim of zero
+provider retention. API usage may be billed to your account. No automatic model calls
+occur during normal research, refresh, startup or tests.
+
+One request runs at a time. Successful briefs are cached in memory for 15 minutes,
+with at most 32 entries; changed evidence invalidates the cache. There are no automatic
+retries. Missing keys, insufficient evidence, invalid references, incomplete responses,
+refusals and API errors preserve the deterministic answer.
+
+**Validation status:** 10 offline adapter tests supplement the 25 existing test methods.
+They use mocked responses and test the integration contract, not live model quality.
+No live OpenAI request has been verified for this submission because no key was
+configured. Before presenting generated results, run a real request and review its
+figures, periods, citations and unsupported inferences.
+
+Architecture: browser click → server recomputes evidence → bounded OpenAI request →
+response and source-ID validation → separately labelled commentary. Unsupported
+financial queries are not forwarded to the model. It cannot execute tools, refresh
+filings, modify the verified table or fill missing coverage.
+
+Reference: https://developers.openai.com/api/docs/guides/structured-outputs
+Model: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+
 ## Expanded company universe
 
 The Company explorer now covers **200 companies across 18 official sectors**, retrieved from the [official NIFTY 200 constituent CSV](https://www.niftyindices.com/IndexConstituent/ind_nifty200list.csv) on 30 October 2026. `data/universe.json` preserves company names, NSE symbols, sector labels, ISINs, retrieval timestamp and a SHA-256 hash of the downloaded source. Current membership is not a point-in-time history; do not use it to claim survivorship-free strategy results.
@@ -45,11 +92,11 @@ Refresh architecture:
 - `POST /api/current/refresh` starts a single background job and returns HTTP 202 with job status. `GET /api/refresh-status` reports completed/total/error counts. Cached observations remain readable during the batch. Only one job runs at a time, requests are limited to six workers with a small per-request pause, and a completed attempt is throttled for one minute. Failed rows retain their original timestamps.
 - `python universe.py` refreshes and validates membership. Restart the app after membership changes so its provider map reloads. `python market.py` refreshes the full saved price snapshot and reports batch progress. These are explicit commands, not scheduled services.
 
-The 25 test methods include membership count/uniqueness, provider-map coverage, constituent validation, symbol/name resolution, refusing unverified financials and preventing one issuer's filing from being attached to another company's price answer. The separate 16 question cases remain historical-engine checks. Live-provider retrieval was checked separately: 203/203 series loaded without errors in the development refresh; this is not an ongoing availability guarantee.
+The 35 test methods include membership count/uniqueness, provider-map coverage, constituent validation, symbol/name resolution, refusing unverified financials and preventing one issuer's filing from being attached to another company's price answer. The separate 16 question cases remain historical-engine checks. Live-provider retrieval was checked separately: 203/203 series loaded without errors in the development refresh; this is not an ongoing availability guarantee.
 
 ## Product structure
 
-This is an **independent PRISM-inspired assessment concept**, not an official PRISM product, a copy of its private application, or an integration with Spectra. The public product description at [prismxlabs.com](https://prismxlabs.com/) informed the workflow. No affiliation, approval, proprietary alternative-data access or LLM capability is claimed.
+This is an **independent PRISM-inspired assessment concept**, not an official PRISM product, a copy of its private application, or an integration with Spectra. The public product description at [prismxlabs.com](https://prismxlabs.com/) informed the workflow. No affiliation, approval or proprietary alternative-data access is claimed. An optional OpenAI commentary feature is available when configured; the core evidence engine is deterministic.
 
 The primary journey is **question → company context → evidence → explicit monitor**:
 
@@ -86,7 +133,7 @@ Bot examples: `Review current Indian markets`, `Show current price for TCS`, `Sh
 
 Read APIs: `GET /api/current` reads the saved snapshot and recomputes freshness. `POST /api/current/refresh` refreshes it, subject to the one-minute throttle and same-origin checks.
 
-The 25 offline test methods include fixed indicator oracles, proper prior-session change calculation, incomplete-session exclusion, missing/short history, bad currency, future/stale timestamps, failed-refresh timestamp preservation and a recent-quarter filing oracle. The separate 16 question-level cases assess the historical engine; their pass rate is not an accuracy score for live prices or the full current-market bot. The fingerprint includes market logic, recent filings and market tests, but excludes the changing provider cache. Successful provider retrieval was checked separately during development.
+The 35 offline test methods include fixed indicator oracles, proper prior-session change calculation, incomplete-session exclusion, missing/short history, bad currency, future/stale timestamps, failed-refresh timestamp preservation and a recent-quarter filing oracle. The separate 16 question-level cases assess the historical engine; their pass rate is not an accuracy score for live prices or the full current-market bot. The fingerprint includes market logic, recent filings and market tests, but excludes the changing provider cache. Successful provider retrieval was checked separately during development.
 
 ## Quant research tools
 
@@ -94,7 +141,7 @@ Three additional views are available from the sidebar and compact navigation:
 
 - **Data quality:** 22 checks covering required observations, unit metadata, numeric plausibility, fiscal-year alignment, source locators, missing publication dates, issuer comparability and observation age. The current dataset yields 13 passes, 9 warnings and no failures as of 30 October 2026. These are not independent financial audits or a composite quality rating. The freshness threshold is an explicit 730 days from period end, appropriate to flagging this historical demo.
 - **What changed?:** a selectable-company FY2023-to-FY2024 operating-profit bridge. Revenue-scale effect = change in revenue × starting margin. Margin effect = ending revenue × change in margin. The two effects sum exactly to the profit change. This ordering puts the interaction term in the margin effect. It does not identify causal drivers such as pricing, FX or acquisitions. Negative contributions are shown in a different colour.
-- **Evaluation:** 16 handcrafted question cases (six explicit numeric expectations and ten expected refusals), citation-ID linkage, 25 test methods, local timing and zero model-call cost. Citation linkage is not semantic source verification. A content fingerprint detects changes to engine, analytics, data, fixtures and tests since the saved evaluation. Results are regression checks, not a claim of accuracy on unrestricted questions.
+- **Evaluation:** 16 handcrafted question cases (six explicit numeric expectations and ten expected refusals), citation-ID linkage, 35 test methods, local timing and zero model-call cost. Citation linkage is not semantic source verification. A content fingerprint detects changes to engine, analytics, data, fixtures and tests since the saved evaluation. Results are regression checks, not a claim of accuracy on unrestricted questions.
 
 Run `python evaluate.py` to regenerate the saved report; the browser's reload button only rereads it. Observation age uses the current India date at request time. Source verification date and source publication date remain distinct.
 
@@ -102,7 +149,7 @@ Additional read-only endpoints: `/api/quality`, `/api/changes/TCS` (also `INFY` 
 
 ## Run
 
-Requires Python 3.10 or newer. No third-party packages, API keys or package installation. Current-price refresh requires outbound internet access to query1.finance.yahoo.com; cached historical analysis and automated tests work offline.
+Requires Python 3.10 or newer. No third-party package installation. Core research needs no API key; optional OpenAI briefs require one. Current-price refresh requires outbound internet access to query1.finance.yahoo.com; cached historical analysis and automated tests work offline.
 
 ```sh
 python app.py --port 18765
@@ -163,7 +210,7 @@ The compact source rows are numeric transcriptions, not complete document quotat
 - One metric per question. All selected companies are evaluated over the same requested years. Complex company-specific date mappings are not supported.
 - No automatic PDF extraction, uploads, unrestricted narrative analysis, exchange-grade real-time feed, forecasts, standalone accounts, EBITDA, net profit or valuation. Recent quarterly disclosures are a separate, manually curated dataset.
 - Inputs are manually curated and can contain transcription errors. The numeric test oracles are separately hardcoded but were prepared during the same development process, not by an independent auditor.
-- Model calls and model cost are zero. That does not mean total infrastructure or development cost is zero.
+- The core evidence engine and offline evaluation make zero model calls. Optional OpenAI briefs incur API usage; the UI reports request counts and returned token usage without inventing a price. Total infrastructure and development costs are separate.
 - The interface displays the query result and supports JSON export. It does not store queries or export a PDF.
 
 ## Before production

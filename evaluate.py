@@ -22,7 +22,7 @@ if __name__ == '__main__':
         timings.append((time.perf_counter() - t) * 1000)
     report = {'test_methods': result.testsRun, 'all_passed': True,
               'engine_timing': {'iterations': 200, 'median_ms': round(statistics.median(timings), 3), 'p95_ms': round(sorted(timings)[189], 3), 'note': 'Local engine only; excludes browser/network/rendering. Not a production benchmark.'},
-              'evaluation_scope': 'Small handcrafted regression suite; not an estimate of accuracy on unrestricted financial questions. Citation integrity is checked, not remote source availability.',
+              'evaluation_scope': 'Small handcrafted regression suite with mocked OpenAI adapter checks; no live model calls or model-quality assessment. Not an estimate of accuracy on unrestricted financial questions. Citation integrity is checked, not remote source availability.',
               'examples': results}
     cases = json.loads((root / 'data/eval_cases.json').read_text(encoding='utf-8'))
     evaluated = []

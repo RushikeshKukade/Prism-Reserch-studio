@@ -5,7 +5,7 @@ It is not an official PRISM product.
 
 ## Run locally
 
-Requires Python 3.10+ and a modern browser. No third-party packages or API keys.
+Requires Python 3.10+ and a modern browser. No third-party packages. Core research needs no API key.
 
 1. Extract the download and open this folder (the folder containing app.py).
 2. In a terminal, run: python app.py --port 18765
@@ -22,7 +22,7 @@ in the browser address. Read any terminal error before opening the page.
 python -m unittest discover -s tests -v
 python evaluate.py
 
-The evaluation report covers 25 automated test methods and 16 handcrafted
+The evaluation report covers 35 automated test methods and 16 handcrafted
 historical question cases. It does not establish unrestricted answer accuracy
 or investment performance. No live refresh runs as part of these checks.
 
@@ -32,12 +32,19 @@ or investment performance. No live refresh runs as part of these checks.
 - Verified financial-statement analysis covers TCS, Infosys and HCLTech.
 - Market data is a dated snapshot, not a guaranteed live exchange feed.
 - Research monitors are local browser rules, not scheduled notifications.
-- The assistant uses defined queries and calculations; no LLM is connected.
+- The core assistant uses defined queries and calculations. An optional OpenAI brief requires a local API key; no live model call has yet been verified. See README.md.
 - Current constituents have survivorship bias and are not a historical universe.
 - No trading backtest or validated profitable strategy is claimed.
 - Public provider terms and exchange data licensing need review before production use.
 
 See README.md for architecture, source links, metric definitions and caveats.
+
+## Optional API setup
+
+Copy .env.example to .env and add your OpenAI key locally. Git ignores .env and
+.env.*; only the blank .env.example is included. Never upload your populated .env.
+The core application works without a key. Generate brief is an explicit paid API
+request when configured; it sends the question and selected evidence to OpenAI.
 
 ## Upload to GitHub
 

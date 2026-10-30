@@ -1,5 +1,6 @@
 const $ = id => document.getElementById(id);
 let metadata, lastResult;
+let aiConfigured = false;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const indian = n => new Intl.NumberFormat('en-IN', {maximumFractionDigits:0}).format(n);
 const sourceLink = s => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)} ↗</a>`;
@@ -53,16 +54,19 @@ function render(result, question) {
     if(result.calculations.length) html+=`<details open><summary>Calculation trail</summary>${result.calculations.map(c=>`<p><strong>${esc(c.company)} · ${esc(c.year)}</strong><br>${esc(c.formula)}<br>${esc(c.substitution)} [${c.source_ids.map(esc).join(', ')}]</p>`).join('')}</details>`;
     html+=`<details open id="evidence-details"><summary>Source evidence</summary>${result.evidence.map(s=>`<div id="evidence-${esc(s.id)}">${evidence(s)}</div>`).join('')}</details>`;
   }
-  html+=`<div class="answer-actions"><button class="outline-button" id="result-monitor">Define a monitor ↗</button><span>Choose an observation to follow next.</span></div><details class="audit-details"><summary>Research audit</summary><div class="metrics"><span>${result.latency_ms} ms engine time</span><span>0 model calls · ₹0 model cost</span><span>${esc(result.snapshot||'Fixed snapshot')} · verified ${esc(result.verified_on)}</span><button class="export" id="export-json">Export answer JSON ↓</button></div></details>`;
+  if(ok) html+=`<section class="ai-brief"><div class="ai-brief-top"><div><div class="eyebrow">OPTIONAL / OPENAI</div><h3>Turn evidence into a research brief</h3></div><button type="button" class="outline-button" id="generate-brief" ${aiConfigured?'':'disabled'}>Generate brief ↗</button></div><p class="table-note">${aiConfigured?'Sends this question and its evidence to OpenAI. API charges may apply.':'Not configured. Add your API key to the local .env file; see the README.'} The verified answer above stays available.</p><div id="ai-brief-content" aria-live="polite"></div></section>`;
+  html+=`<div class="answer-actions"><button class="outline-button" id="result-monitor">Define a monitor ↗</button><span>Choose an observation to follow next.</span></div><details class="audit-details"><summary>Research audit</summary><div class="metrics"><span>${result.latency_ms} ms engine time</span><span>Evidence engine: 0 model calls · ₹0 model cost</span><span>${esc(result.snapshot||'Fixed snapshot')} · verified ${esc(result.verified_on)}</span><button class="export" id="export-json">Export answer JSON ↓</button></div></details>`;
   $('result').innerHTML=html;
   $('result').querySelectorAll('[data-width]').forEach(b=>b.style.width=b.dataset.width+'%');
   renderEvidenceTrail(result,question);
   $('result-monitor').onclick=()=>openMonitorBuilder(result.rows?.[0]?.company_id||$('context-company').value);
   $('export-json').onclick=()=>download('prism-research-answer.json',JSON.stringify(lastResult,null,2),'application/json');
+  if($('generate-brief')) $('generate-brief').onclick=generateBrief;
   $('result').querySelectorAll('a[href^="#evidence-"]').forEach(a=>a.onclick=()=>{$('evidence-details').open=true;});
 }
 async function ask(question) {
   if(!question.trim()) {$('question').focus();return;}
+  lastResult=null;
   setView('research');$('question').value=question;$('submit').disabled=true;$('submit').textContent='Checking evidence…';
   try {
     const response=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question})});
@@ -74,6 +78,7 @@ $('ask-form').onsubmit=e=>{e.preventDefault();ask($('question').value);};
 $('question').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();ask($('question').value);}};
 async function init() {
   const res=await fetch('/api/meta');if(!res.ok)throw Error('Cannot load snapshot');metadata=await res.json();
+  await loadAiStatus();
   const companies=metadata.data.companies;
   renderDashboard();
   initStudio();
@@ -247,3 +252,45 @@ async function pollMarketRefresh(){
   }catch(error){marketRefreshTimer=null;button.disabled=false;$('current-status').textContent='Could not check refresh status. Existing cached observations are retained.';}
 }
 $('view-all-companies').onclick=()=>setView('universe');
+
+async function loadAiStatus() {
+  try {
+    const state=await api('/api/ai/status');
+    aiConfigured=state.configured;
+    $('ai-connection-status').textContent=aiConfigured
+      ? 'OpenAI brief configured · '+state.model+' · API access not yet verified'
+      : 'OpenAI brief: not configured · core research works without a key';
+  } catch(error) {
+    aiConfigured=false;
+    $('ai-connection-status').textContent='OpenAI status unavailable · core research remains available';
+  }
+}
+async function generateBrief() {
+  const active=lastResult, button=$('generate-brief'), panel=$('ai-brief-content');
+  if(!active || !button || !panel) return;
+  button.disabled=true;
+  panel.textContent='Preparing a brief from the displayed evidence…';
+  try {
+    const response=await fetch('/api/brief',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:active.question})});
+    const data=await response.json();
+    if(lastResult!==active) return;
+    if(!response.ok) throw Error(data.error||'Brief unavailable');
+    active.ai_brief=data;
+    if(data.status!=='generated') {
+      panel.innerHTML='<p class="warning">'+esc(data.message)+'</p>';
+      return;
+    }
+    const b=data.brief;
+    panel.innerHTML='<p class="ai-brief-notice">'+esc(data.notice)+'</p><p>'+esc(b.summary)+'</p>'
+      +'<h4>Observations</h4><ul>'+b.observations.map(o=>'<li>'+esc(o.text)+' '+o.source_ids.map(id=>'<a href="#evidence-'+esc(id)+'">['+esc(id)+']</a>').join(' ')+'</li>').join('')+'</ul>'
+      +'<h4>Limitations to carry forward</h4><ul>'+b.limitations.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'
+      +'<h4>Questions for further research</h4><ul>'+b.follow_up_questions.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>'
+      +'<p class="table-note">'+esc(data.model)+' · '+data.model_calls+' API request(s) for this click'
+      +(data.cached?' · reused cached brief':'')+' · tokens for original generation: '+esc(data.usage.total_tokens??'not reported')+'</p>';
+    panel.querySelectorAll('a[href^="#evidence-"]').forEach(a=>a.onclick=()=>{$('evidence-details').open=true;});
+  } catch(error) {
+    if(lastResult===active) panel.innerHTML='<p class="warning">'+esc(error.message)+'. The verified answer remains available.</p>';
+  } finally {
+    if(lastResult===active) button.disabled=false;
+  }
+}

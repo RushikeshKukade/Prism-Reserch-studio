@@ -1,13 +1,13 @@
 {
-  "test_methods": 25,
+  "test_methods": 35,
   "all_passed": true,
   "engine_timing": {
     "iterations": 200,
-    "median_ms": 0.073,
-    "p95_ms": 0.136,
+    "median_ms": 0.071,
+    "p95_ms": 0.173,
     "note": "Local engine only; excludes browser/network/rendering. Not a production benchmark."
   },
-  "evaluation_scope": "Small handcrafted regression suite; not an estimate of accuracy on unrestricted financial questions. Citation integrity is checked, not remote source availability.",
+  "evaluation_scope": "Small handcrafted regression suite with mocked OpenAI adapter checks; no live model calls or model-quality assessment. Not an estimate of accuracy on unrestricted financial questions. Citation integrity is checked, not remote source availability.",
   "examples": [
     {
       "question": "Compare revenue for TCS, Infosys and HCLTech in FY2024",
@@ -110,7 +110,7 @@
         "How did TCS operating margin change from FY2023 to FY2024?",
         "Show HCLTech operating profit in FY2024"
       ],
-      "latency_ms": 0.186,
+      "latency_ms": 0.233,
       "model_calls": 0,
       "model_cost_inr": 0,
       "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
@@ -247,7 +247,7 @@
         "How did TCS operating margin change from FY2023 to FY2024?",
         "Show HCLTech operating profit in FY2024"
       ],
-      "latency_ms": 0.231,
+      "latency_ms": 0.218,
       "model_calls": 0,
       "model_cost_inr": 0,
       "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
@@ -333,7 +333,7 @@
         "How did TCS operating margin change from FY2023 to FY2024?",
         "Show HCLTech operating profit in FY2024"
       ],
-      "latency_ms": 0.27,
+      "latency_ms": 0.176,
       "model_calls": 0,
       "model_cost_inr": 0,
       "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
@@ -440,7 +440,7 @@
         "How did TCS operating margin change from FY2023 to FY2024?",
         "Show HCLTech operating profit in FY2024"
       ],
-      "latency_ms": 0.18,
+      "latency_ms": 0.291,
       "model_calls": 0,
       "model_cost_inr": 0,
       "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
@@ -495,15 +495,15 @@
         "How did TCS operating margin change from FY2023 to FY2024?",
         "Show HCLTech operating profit in FY2024"
       ],
-      "latency_ms": 0.12,
+      "latency_ms": 0.163,
       "model_calls": 0,
       "model_cost_inr": 0,
       "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
       "verified_on": "2026-10-30"
     }
   ],
-  "generated_at": "2026-10-30T13:40:31.308770+00:00",
-  "fingerprint": "de3259f099fb97e76286b71c6987e4d53ed629c221f8bd8f89b7b3eb7c1937ce",
+  "generated_at": "2026-10-30T16:10:18.035714+00:00",
+  "fingerprint": "8bad4ac7ed9c9d122d7e4f4839c7ac18721bd2510c4049410be0afcec996f125",
   "cases": [
     {
       "id": "N01",
@@ -520,7 +520,7 @@
       "numeric_ok": true,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.263
+      "latency_ms": 0.128
     },
     {
       "id": "N02",
@@ -537,7 +537,7 @@
       "numeric_ok": true,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.207
+      "latency_ms": 0.069
     },
     {
       "id": "N03",
@@ -554,7 +554,7 @@
       "numeric_ok": true,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.156
+      "latency_ms": 0.059
     },
     {
       "id": "N04",
@@ -572,7 +572,7 @@
       "numeric_ok": true,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.116
+      "latency_ms": 0.069
     },
     {
       "id": "N05",
@@ -590,7 +590,7 @@
       "numeric_ok": true,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.115
+      "latency_ms": 0.067
     },
     {
       "id": "N06",
@@ -607,7 +607,7 @@
       "numeric_ok": true,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.095
+      "latency_ms": 0.056
     },
     {
       "id": "R01",
@@ -620,7 +620,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.085
+      "latency_ms": 0.052
     },
     {
       "id": "R02",
@@ -633,7 +633,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.007
+      "latency_ms": 0.004
     },
     {
       "id": "R03",
@@ -646,7 +646,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.131
+      "latency_ms": 0.047
     },
     {
       "id": "R04",
@@ -659,7 +659,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.008
+      "latency_ms": 0.004
     },
     {
       "id": "R05",
@@ -672,7 +672,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.013
+      "latency_ms": 0.005
     },
     {
       "id": "R06",
@@ -685,7 +685,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.003
     },
     {
       "id": "R07",
@@ -698,7 +698,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.005
+      "latency_ms": 0.003
     },
     {
       "id": "R08",
@@ -711,7 +711,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.106
+      "latency_ms": 0.051
     },
     {
       "id": "R09",
@@ -724,7 +724,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.01
+      "latency_ms": 0.006
     },
     {
       "id": "R10",
@@ -737,7 +737,7 @@
       "numeric_ok": null,
       "citation_ok": true,
       "passed": true,
-      "latency_ms": 0.012
+      "latency_ms": 0.007
     }
   ],
   "case_count": 16,

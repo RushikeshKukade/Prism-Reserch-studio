@@ -8,8 +8,18 @@ from engine import DATA, EXAMPLES, answer
 from analytics import quality_report, change_bridge, saved_evaluation
 from market import current_market, answer_current, market_summary, start_refresh, refresh_status, read_cache
 from universe import get_universe
+from ai_brief import generate_brief, status as ai_status
 
 STATIC = Path(__file__).parent / 'static'
+
+
+def research_answer(question):
+    import time
+    started = time.perf_counter()
+    current = answer_current(question)
+    if current is not None:
+        current['latency_ms'] = round((time.perf_counter() - started) * 1000, 3)
+    return current if current is not None else answer(question)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -26,6 +36,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = unquote(urlsplit(self.path).path)
+        if path == '/api/ai/status':
+            return self.respond(ai_status())
         if path == '/api/current':
             return self.respond(market_summary())
         if path == '/api/universe':
@@ -57,12 +69,17 @@ class Handler(BaseHTTPRequestHandler):
         self.respond((STATIC / name).read_bytes(), content_type=mime + '; charset=utf-8')
 
     def do_POST(self):
-        if self.path not in ('/api/ask','/api/current/refresh'):
+        if self.path not in ('/api/ask','/api/brief','/api/current/refresh'):
             return self.respond({'error': 'Not found'}, 404)
         # No cross-origin requests or remote binding; intended for local demo only.
         origin = self.headers.get('Origin')
         if origin and origin != 'http://' + self.headers.get('Host', ''):
             return self.respond({'error': 'Origin not allowed'}, 403)
+        if self.path == '/api/brief':
+            host = self.headers.get('Host', '')
+            allowed_hosts = {f'127.0.0.1:{self.server.server_port}', f'localhost:{self.server.server_port}'}
+            if host not in allowed_hosts or origin != 'http://' + host:
+                return self.respond({'error': 'Same-origin localhost browser request required'}, 403)
         if self.path == '/api/current/refresh':
             return self.respond({'job':start_refresh()},202)
         try:
@@ -72,14 +89,14 @@ class Handler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(size))
             if not isinstance(body, dict) or not isinstance(body.get('question'), str):
                 return self.respond({'error': 'question must be a string'}, 400)
+            if not 1 <= len(body['question'].strip()) <= 1000:
+                return self.respond({'error': 'Use a question between 1 and 1000 characters'}, 400)
         except (ValueError, UnicodeDecodeError):
             return self.respond({'error': 'Invalid JSON'}, 400)
-        import time
-        started=time.perf_counter()
-        current=answer_current(body['question'])
-        if current is not None:
-            current['latency_ms']=round((time.perf_counter()-started)*1000,3)
-        self.respond(current or answer(body['question']))
+        result = research_answer(body['question'])
+        if self.path == '/api/brief':
+            return self.respond(generate_brief(body['question'], result))
+        self.respond(result)
 
 
 if __name__ == '__main__':

@@ -11,7 +11,7 @@ ROOT = Path(__file__).parent
 
 def fingerprint():
     digest = hashlib.sha256()
-    for name in ['app.py', 'engine.py', 'analytics.py', 'reviews.py', 'market.py', 'universe.py', 'data/universe.json', 'tests/test_universe.py', 'data/recent_results.json', 'tests/test_market.py', 'evaluate.py', 'data/companies.json', 'data/eval_cases.json', 'tests/test_research.py', 'tests/test_analytics.py']:
+    for name in ['app.py', 'ai_brief.py', 'tests/test_ai_brief.py', 'engine.py', 'analytics.py', 'reviews.py', 'market.py', 'universe.py', 'data/universe.json', 'tests/test_universe.py', 'data/recent_results.json', 'tests/test_market.py', 'evaluate.py', 'data/companies.json', 'data/eval_cases.json', 'tests/test_research.py', 'tests/test_analytics.py']:
         p = ROOT / name
         digest.update(name.encode())
         digest.update(p.read_bytes() if p.exists() else b'MISSING')
