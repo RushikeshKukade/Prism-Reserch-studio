@@ -1,0 +1,194 @@
+# PRISM Research Studio - assessment concept
+
+An India-only, evidence-first market and research prototype covering **200 Indian companies from the official NIFTY 200 list**, with verified filing-based financial analysis for **TCS, Infosys and HCLTech**. It helps an analyst answer a financial question without losing the reporting period, metric definition or source behind a number.
+
+**Historical scope:** consolidated FY2023 and FY2024 revenue and company-reported operating profit/EBIT; derived operating margins, year-on-year growth and margin changes. Indian financial years end on 31 March. Values use INR crore and Indian digit grouping. India-focused means India-listed companies; their consolidated revenues include international operations.
+
+## Quick start and dependencies
+
+- Python **3.10 or newer** and a modern browser.
+- **No third-party Python packages and no API keys.** `requirements.txt` intentionally has no package requirements.
+- Internet access is required to refresh public market data or open source links. The bundled snapshot and test suite work offline.
+- Git is optional for downloading/cloning; it is not required to run the downloaded project.
+
+From the project folder:
+
+```sh
+python app.py --port 18765
+```
+
+Open **http://127.0.0.1:18765**. Keep the terminal running and open this address manually; the app does not launch a browser. Do not use VS Code Live Server. If Windows blocks a port, choose another using `--port`.
+
+Run the checks with:
+
+```sh
+python evaluate.py
+```
+
+On Windows, use `py` instead of `python` if needed. No database, Node.js, paid data subscription or model service is required. This is a local research prototype, not a production deployment.
+
+![Research Studio preview](docs/research-studio.jpg)
+
+## Expanded company universe
+
+The Company explorer now covers **200 companies across 18 official sectors**, retrieved from the [official NIFTY 200 constituent CSV](https://www.niftyindices.com/IndexConstituent/ind_nifty200list.csv) on 30 October 2026. `data/universe.json` preserves company names, NSE symbols, sector labels, ISINs, retrieval timestamp and a SHA-256 hash of the downloaded source. Current membership is not a point-in-time history; do not use it to claim survivorship-free strategy results.
+
+**Coverage is deliberately explicit:** all 200 have issuer identity and dated market observations in the saved snapshot; verified annual and quarterly financial-statement figures remain limited to the original three companies. The explorer's coverage columns, company profile and bot expose that gap. No revenue or margin is filled from price data, inferred from peers, or silently copied from another issuer. Banks and industrial companies require different financial definitions; price coverage does not make cross-sector operating margins comparable.
+
+The explorer supports name/NSE-symbol search, sector/coverage filters, sorting, 25-row pages, research links and CSV export of the currently filtered universe. Company-context, chart and monitor selectors recognise the full list. For a company without verified filings, the context card shows blanks and a financial-evidence gap; price-based research and manual price-momentum rules remain available. Example: `Show current price for Reliance`. `Show latest revenue for Reliance` explicitly declines until its filing is verified.
+
+Refresh architecture:
+
+- `GET /api/universe` exposes the official membership snapshot.
+- `GET /api/current` returns compact summaries without the full price histories.
+- `GET /api/history/<NSE-symbol>` returns one cached history on demand; encoded symbols such as `M%26M` are supported.
+- `POST /api/current/refresh` starts a single background job and returns HTTP 202 with job status. `GET /api/refresh-status` reports completed/total/error counts. Cached observations remain readable during the batch. Only one job runs at a time, requests are limited to six workers with a small per-request pause, and a completed attempt is throttled for one minute. Failed rows retain their original timestamps.
+- `python universe.py` refreshes and validates membership. Restart the app after membership changes so its provider map reloads. `python market.py` refreshes the full saved price snapshot and reports batch progress. These are explicit commands, not scheduled services.
+
+The 25 test methods include membership count/uniqueness, provider-map coverage, constituent validation, symbol/name resolution, refusing unverified financials and preventing one issuer's filing from being attached to another company's price answer. The separate 16 question cases remain historical-engine checks. Live-provider retrieval was checked separately: 203/203 series loaded without errors in the development refresh; this is not an ongoing availability guarantee.
+
+## Product structure
+
+This is an **independent PRISM-inspired assessment concept**, not an official PRISM product, a copy of its private application, or an integration with Spectra. The public product description at [prismxlabs.com](https://prismxlabs.com/) informed the workflow. No affiliation, approval, proprietary alternative-data access or LLM capability is claimed.
+
+The primary journey is **question → company context → evidence → explicit monitor**:
+
+- **Ask research:** selected-company context combines a dated market observation with a separately dated quarterly disclosure. Ask a supported question, then inspect the response and its linked evidence. An open-question card identifies missing alternative data instead of inventing it.
+- **Evidence trail:** a persistent desktop side panel (stacked on narrow screens) displays sources, reporting/announcement/verification dates, accounting caveats and unsupported-answer boundaries. Review references are distinguished from claim-level source linkage. Technical timing and model-call details are tucked into a Research audit disclosure.
+- **Your monitors:** create an explicit above/below threshold for a company's quarterly revenue growth, headline operating margin or 20-session price change. Rules are stored only in this browser's localStorage. They are evaluated on opening/checking the monitor view against saved observations, with source links and timestamps. Stale/missing data gives a Needs data result. A met condition is not a trading signal.
+- **Market context / Company fundamentals:** supporting workspaces keep current observations and historical annual analysis distinct.
+- **Evidence library:** recent quarterly and historical annual disclosures are grouped separately.
+- **Research controls:** arithmetic explanations, historical data health, evaluation and methodology remain available without dominating the main user journey.
+
+No scheduled monitoring, alerts, delivery, user accounts or alternative-data integrations are active. The monitor builder uses explicit controls; it does not claim to interpret arbitrary natural-language monitoring instructions. Browser storage can be cleared or unavailable and does not sync across devices. Rule checks are strict above/below; equality does not meet the condition. Thresholds are chosen by the user, not optimized or validated investment rules. The prototype supports up to 20 local rules.
+
+`static/studio.js` owns company context, evidence-trail rendering and the local-rule workflow; `static/app.js` retains financial views, chart controls and server requests. `app.py` serves both. Financial tests remain unchanged, and the new workflow was manually checked in the browser: quarterly lookup → linked evidence → rule creation → condition evaluation → persistence across reload → rule removal, plus disclosure grouping in the library.
+
+## Dashboard
+
+The Ask research workspace opens by default. Market context and Company fundamentals preserve the current-price and historical-fundamentals views. The historical dashboard It includes four summary cards, a financial-year selector, paired revenue and operating-margin comparison bars, revenue-growth comparisons, an issuer coverage panel, and a searchable, sortable company watchlist. Explore opens a company query in the research assistant. CSV export includes both figures and the company-specific operating-profit basis. Source library and methodology remain available from navigation.
+
+All historical-dashboard figures derive from the same fixed facts used by the assistant. Covered revenue is the sum of these three companies, not an Indian market index. FY2023 growth is shown as unavailable because FY2022 is outside the dataset. Financial comparison bars begin at zero and do not represent share prices.
+
+## Current Indian markets
+
+The Market context view covers **200 NIFTY constituents plus NIFTY 50, NIFTY IT and India VIX**. It shows provider prices and timestamps, comparisons to the prior daily close, complete-session charts, 20-session changes, 50/200-session moving averages and annualised 20-return realised volatility. Index levels, volatility-index points and INR-per-share quotes are distinguished.
+
+- Provider: Yahoo Finance's public chart endpoint (`query1.finance.yahoo.com/v8/finance/chart/…`), an unofficial service with no availability or latency guarantee. Data can be delayed or throttled; this is not a licensed real-time exchange feed. Provider source links are displayed per instrument. Review provider terms and exchange licensing before redistribution or production deployment.
+- Select **Refresh market data** to request six fixed instruments in parallel. Refresh is throttled to one batch per minute. Opening the current view requests a refresh when the last attempt is more than five minutes old. No scheduled background job is installed.
+- `python market.py` refreshes the saved snapshot from the command line. Errors are shown per instrument. Failed requests retain the original observation/retrieval timestamps; they never turn old data into a fresh quote.
+- `data/current_market.json` stores the last observations and one year of daily history. Every quote is dated. The 96-hour freshness heuristic uses elapsed time; it is not a trading-holiday calendar or proof that a quote is from the latest session.
+- Daily indicators exclude today's bar until 15:35 IST. Rows with missing/non-positive/non-finite prices are omitted without forward filling. If adjusted closes are available they are used, otherwise unadjusted history is explicitly labelled. Missing adjusted values can make indicators end earlier than the displayed quote; both dates are shown. Provider adjustments are not independently audited.
+- Moving averages are simple means over the last 50/200 valid daily observations. Momentum is `(P[t]/P[t-20] - 1)*100`. Volatility is sample standard deviation of 20 daily simple returns × sqrt(252) × 100. These are descriptive, not validated signals. Insufficient history produces missing metrics, not zeros.
+- Quarterlies are **manually verified Q2 FY2027**, ended 30 September 2026, with announcement dates, rounded issuer margins and source links in `data/recent_results.json`. Verified 30 October 2026; price refresh does not ingest new financial reports. After 120 days, the view flags the filing verification for review. Definitions differ and quarterly values are not annualised or mixed with annual totals.
+
+Bot examples: `Review current Indian markets`, `Show current price for TCS`, `Show latest revenue for Infosys`, `Show current operating margin for HCLTech`. Current-data routing in `app.py` is separate from the historical engine, whose explicit unsupported-period tests remain unchanged. Unsupported current queries do not invoke unrestricted generation. Bot reviews use the saved snapshot; refresh it in Current markets before requesting a review.
+
+Read APIs: `GET /api/current` reads the saved snapshot and recomputes freshness. `POST /api/current/refresh` refreshes it, subject to the one-minute throttle and same-origin checks.
+
+The 25 offline test methods include fixed indicator oracles, proper prior-session change calculation, incomplete-session exclusion, missing/short history, bad currency, future/stale timestamps, failed-refresh timestamp preservation and a recent-quarter filing oracle. The separate 16 question-level cases assess the historical engine; their pass rate is not an accuracy score for live prices or the full current-market bot. The fingerprint includes market logic, recent filings and market tests, but excludes the changing provider cache. Successful provider retrieval was checked separately during development.
+
+## Quant research tools
+
+Three additional views are available from the sidebar and compact navigation:
+
+- **Data quality:** 22 checks covering required observations, unit metadata, numeric plausibility, fiscal-year alignment, source locators, missing publication dates, issuer comparability and observation age. The current dataset yields 13 passes, 9 warnings and no failures as of 30 October 2026. These are not independent financial audits or a composite quality rating. The freshness threshold is an explicit 730 days from period end, appropriate to flagging this historical demo.
+- **What changed?:** a selectable-company FY2023-to-FY2024 operating-profit bridge. Revenue-scale effect = change in revenue × starting margin. Margin effect = ending revenue × change in margin. The two effects sum exactly to the profit change. This ordering puts the interaction term in the margin effect. It does not identify causal drivers such as pricing, FX or acquisitions. Negative contributions are shown in a different colour.
+- **Evaluation:** 16 handcrafted question cases (six explicit numeric expectations and ten expected refusals), citation-ID linkage, 25 test methods, local timing and zero model-call cost. Citation linkage is not semantic source verification. A content fingerprint detects changes to engine, analytics, data, fixtures and tests since the saved evaluation. Results are regression checks, not a claim of accuracy on unrestricted questions.
+
+Run `python evaluate.py` to regenerate the saved report; the browser's reload button only rereads it. Observation age uses the current India date at request time. Source verification date and source publication date remain distinct.
+
+Additional read-only endpoints: `/api/quality`, `/api/changes/TCS` (also `INFY` and `HCLTECH`), and `/api/evaluation`. Analysis lives in `analytics.py`; explicit evaluation cases are in `data/eval_cases.json`.
+
+## Run
+
+Requires Python 3.10 or newer. No third-party packages, API keys or package installation. Current-price refresh requires outbound internet access to query1.finance.yahoo.com; cached historical analysis and automated tests work offline.
+
+```sh
+python app.py --port 18765
+```
+
+Open **http://127.0.0.1:18765**. On Windows, `py app.py` also works if Python is registered with the launcher. `python app.py --port 8766` selects another port. Stop with Ctrl+C. This local server is a development demo, not production hosting.
+
+Run the evaluation and reproduce the example outputs:
+
+```sh
+python evaluate.py
+```
+
+The command checks financial values, derived outputs, fiscal-year parsing, source linkage, reproducibility, and refusal cases, then writes `evaluation.json`. Engine timings exclude the browser and network. The suite is handcrafted and does not establish accuracy on arbitrary questions.
+
+## Try these five questions
+
+1. Compare revenue for TCS, Infosys and HCLTech in FY2024
+2. Which company had the highest operating margin in FY2024?
+3. How did Infosys revenue grow from FY2023 to FY2024?
+4. How did TCS operating margin change from FY2023 to FY2024?
+5. Show HCLTech operating profit in FY2024
+
+Also try `TCS EBITDA in FY2024`, `Compare TCS and Wipro revenue FY2024`, and `TCS latest revenue`. Each should decline with a reason rather than fabricate an answer or silently drop part of the question.
+
+## Approach
+
+`Question → explicit intent and scope checks → curated financial facts → Python calculations → answer + evidence + caveats`
+
+The interface accepts a **limited natural-language vocabulary using deterministic rules**. It does not use an LLM, embeddings or general document retrieval. This is an auditable baseline for an LLM-backed product, not a claim to have built a general financial chatbot. Questions are independent; no conversational memory is retained.
+
+The decision is to put evidence, financial-year interpretation and arithmetic before fluent prose. Within a small trial, this makes the failure boundary clear and makes every supported calculation reproducible. The same calculation layer could serve as validated tools for an LLM later.
+
+Formulas:
+
+- Operating margin = operating profit / revenue × 100.
+- FY2024 growth = (FY2024 value / FY2023 value − 1) × 100.
+- Margin change = FY2024 margin − FY2023 margin, in **percentage points**.
+
+Calculations retain full precision until display. Margins calculated from INR-crore inputs can differ from rounded headline percentages or USD-denominated margins. Peer rankings apply only to the selected companies and use the disclosed metric definitions. They are not stock recommendations.
+
+## Data and provenance
+
+`data/companies.json` contains **12 manually curated numeric facts**: two metrics × two annual periods × three companies, plus source locators and metric definitions. The numbers were checked against official public disclosures on **30 October 2026**, using web-accessible text. This is a fixed historical demonstration; it does not claim to use the latest available filings. Full source PDFs are not bundled; the historical demo and saved market snapshot work offline, while external source links need internet access.
+
+| Company | Official source | Locator | Operating-profit basis |
+|---|---|---|---|
+| TCS | [Integrated Annual Report 2023-24](https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2023-24/ar/annual-report-2023-2024.pdf) | Financial Capital, printed p.17 | Management operating profit; FY2024 excludes settlement of legal claim |
+| Infosys | [Q4 FY2024 Fact Sheet](https://www.infosys.com/investors/reports-filings/quarterly-results/2023-2024/q4/documents/fact-sheet.pdf#page=4) | PDF p.4, annual INR table | Consolidated IFRS operating profit; not the quarterly or USD table |
+| HCLTech | [Annual Report 2023-24](https://www.hcltech.com/sites/default/files/document/open/annual-report/2024-07/HCL_AR_2023-24_compressed.pdf) | Corporate Overview, printed p.13; consolidated results p.102 | Earnings before other income, tax and finance cost |
+
+The compact source rows are numeric transcriptions, not complete document quotations. The source library shows those rows and links back to the originals. **Publication dates have not been recorded.** Verification dates are not publication dates. The assistant explicitly declines “as of” questions; this dataset cannot establish when information first became available. External links can change and the evaluation does not verify their ongoing availability.
+
+## Limitations and important assumptions
+
+- Profitability measures are not fully normalized between issuers. TCS's exclusion is shown next to operating comparisons. No adjustment has been made to statutory accounts to force comparability.
+- The vocabulary is intentionally narrow. Some valid paraphrases will be refused. Unknown company names and unsupported mixed requests are rejected. This is not a general semantic parser or a prompt-injection security benchmark.
+- One metric per question. All selected companies are evaluated over the same requested years. Complex company-specific date mappings are not supported.
+- No automatic PDF extraction, uploads, unrestricted narrative analysis, exchange-grade real-time feed, forecasts, standalone accounts, EBITDA, net profit or valuation. Recent quarterly disclosures are a separate, manually curated dataset.
+- Inputs are manually curated and can contain transcription errors. The numeric test oracles are separately hardcoded but were prepared during the same development process, not by an independent auditor.
+- Model calls and model cost are zero. That does not mean total infrastructure or development cost is zero.
+- The interface displays the query result and supports JSON export. It does not store queries or export a PDF.
+
+## Before production
+
+1. Ingest official NSE/BSE/company filings with immutable source hashes, page/table extraction, publication timestamps and version history; check extracted facts against accounting identities and reviewed samples.
+2. Define a normalized accounting taxonomy with reported-versus-adjusted reconciliations. Keep global consolidated revenue distinct from geographic India revenue.
+3. Add an LLM only to produce a typed query plan. Validate company, period, metric and permissions before calling deterministic retrieval/calculation tools. Return only claims backed by evidence IDs; abstain if evidence is missing. Evaluate against this baseline.
+4. Expand the held-out evaluation with unseen paraphrases, unknown peers, conflicting figures, revised statements and adversarial inputs. Measure numeric accuracy, citation support, abstention precision/recall, end-to-end latency and real provider cost.
+5. Add authentication, request limits, document access controls, observability and a proper deployment server.
+
+## Code map and handoff
+
+| File | Responsibility |
+|---|---|
+| `app.py` | Local HTTP server and request validation |
+| `engine.py` | Scope checks, fiscal-year interpretation, retrieval, arithmetic and evidence |
+| `data/companies.json` | Auditable fixed facts and source metadata |
+| `static/` | Browser interface and JSON export |
+| `tests/test_research.py` | Behavioral evaluation and explicit numeric oracles |
+| `evaluate.py` | One-command evaluation and example-output generation |
+
+`POST /api/ask` accepts `{"question":"Infosys revenue growth in FY2024"}`. The result includes `status`, `answer`, `rows`, `calculations`, `evidence`, `warnings`, engine latency and model-call counts. `GET /api/meta` exposes the fixed snapshot and demo questions. The server binds to loopback and is intended for local review.
+
+AI assistance was used to develop this prototype. Before presenting it, review the parsing rules, source figures and tests; choose which trade-offs you agree with and explain them in your own words. No claim is made about personal hours spent or independent authorship.
+
+## Bot review and suggestions
+
+Select **Review this approach for India** in the assistant, or ask `Review this research approach for current Indian markets`. The bot returns a labelled suggestion box with a prototype review, a fundamental-growth/margin hypothesis to test, economic intuition and failure modes, current-data requirements, and out-of-sample execution-cost checks. This is a deterministic methodological review, not a current-market forecast or a validated trading strategy. Official NSE links support the methodology, not present market conditions. The original engine-only review is an offline methodological baseline. In the app, the current-market review now incorporates cached dated price observations and separately verified recent quarterly disclosures. It does not generate company trade recommendations.
