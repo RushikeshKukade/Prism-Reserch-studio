@@ -1,0 +1,2 @@
+# Python 3.10 or newer. Uses the Python standard library only.
+# No third-party Python packages or API keys are required.

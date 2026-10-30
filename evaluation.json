@@ -1,0 +1,747 @@
+{
+  "test_methods": 25,
+  "all_passed": true,
+  "engine_timing": {
+    "iterations": 200,
+    "median_ms": 0.073,
+    "p95_ms": 0.136,
+    "note": "Local engine only; excludes browser/network/rendering. Not a production benchmark."
+  },
+  "evaluation_scope": "Small handcrafted regression suite; not an estimate of accuracy on unrestricted financial questions. Citation integrity is checked, not remote source availability.",
+  "examples": [
+    {
+      "question": "Compare revenue for TCS, Infosys and HCLTech in FY2024",
+      "status": "answered",
+      "answer": "TCS FY2024 revenue: ₹2,40,893 crore; Infosys FY2024 revenue: ₹1,53,670 crore; HCLTech FY2024 revenue: ₹1,09,913 crore.",
+      "metric": "revenue",
+      "rows": [
+        {
+          "company": "TCS",
+          "company_id": "TCS",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "revenue",
+          "value": 240893,
+          "display": "₹2,40,893 crore",
+          "unit": "INR crore",
+          "source_id": "TCS-AR24"
+        },
+        {
+          "company": "Infosys",
+          "company_id": "INFY",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "revenue",
+          "value": 153670,
+          "display": "₹1,53,670 crore",
+          "unit": "INR crore",
+          "source_id": "INFY-Q4FY24"
+        },
+        {
+          "company": "HCLTech",
+          "company_id": "HCLTECH",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "revenue",
+          "value": 109913,
+          "display": "₹1,09,913 crore",
+          "unit": "INR crore",
+          "source_id": "HCL-AR24"
+        }
+      ],
+      "calculations": [],
+      "evidence": [
+        {
+          "id": "TCS-AR24",
+          "title": "TCS Integrated Annual Report 2023-24",
+          "url": "https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2023-24/ar/annual-report-2023-2024.pdf",
+          "locator": "Financial Capital, printed page 17: Revenue Trend and Operating Profit Trend",
+          "publication_date": null,
+          "publication_note": "Annual-report publication date not recorded; verification date is not the publication date.",
+          "company": "TCS",
+          "basis": "Consolidated management operating profit; FY2024 excludes settlement of legal claim. Not statutory profit before tax or EBITDA.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Revenue Trend (INR crore): FY2023 225458; FY2024 240893.",
+            "Operating Profit Trend (INR crore): FY2023 54237; FY2024 59311.",
+            "FY2024 operating profit excludes settlement of legal claim."
+          ]
+        },
+        {
+          "id": "INFY-Q4FY24",
+          "title": "Infosys Q4 FY2024 Fact Sheet",
+          "url": "https://www.infosys.com/investors/reports-filings/quarterly-results/2023-2024/q4/documents/fact-sheet.pdf#page=4",
+          "locator": "PDF page 4: consolidated annual income statement in INR crore (not the quarterly or USD tables)",
+          "publication_date": null,
+          "publication_note": "Fact-sheet publication date not recorded; verification date is not the publication date.",
+          "company": "Infosys",
+          "basis": "Consolidated operating profit, extracted from IFRS financial statements, in INR crore.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Annual revenues (INR crore): FY2024 153670; FY2023 146767.",
+            "Annual operating profit (INR crore): FY2024 31747; FY2023 30905."
+          ]
+        },
+        {
+          "id": "HCL-AR24",
+          "title": "HCLTech Annual Report 2023-24",
+          "url": "https://www.hcltech.com/sites/default/files/document/open/annual-report/2024-07/HCL_AR_2023-24_compressed.pdf",
+          "locator": "Corporate Overview, printed page 13: revenue and earnings performance; consolidated results, printed page 102",
+          "publication_date": null,
+          "publication_note": "Annual-report publication date not recorded; verification date is not the publication date.",
+          "company": "HCLTech",
+          "basis": "Consolidated earnings before other income, tax and finance cost (company-reported EBIT); not EBITDA.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Revenue from operations (INR crore): FY2024 109913; FY2023 101456.",
+            "Earnings before other income, tax and finance cost (INR crore): FY2024 20027; FY2023 18483."
+          ]
+        }
+      ],
+      "warnings": [
+        "Historical snapshot only: FY2023 is April 2022–March 2023; FY2024 is April 2023–March 2024. These are consolidated global businesses listed in India; the figures are not India-only revenue.",
+        "Manually curated numeric rows, not automated PDF ingestion. Source publication dates are not recorded; this is not a point-in-time research dataset."
+      ],
+      "mode": "Deterministic evidence engine; no LLM",
+      "suggestions": [
+        "Compare revenue for TCS, Infosys and HCLTech in FY2024",
+        "Which company had the highest operating margin in FY2024?",
+        "How did Infosys revenue grow from FY2023 to FY2024?",
+        "How did TCS operating margin change from FY2023 to FY2024?",
+        "Show HCLTech operating profit in FY2024"
+      ],
+      "latency_ms": 0.186,
+      "model_calls": 0,
+      "model_cost_inr": 0,
+      "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
+      "verified_on": "2026-10-30"
+    },
+    {
+      "question": "Which company had the highest operating margin in FY2024?",
+      "status": "answered",
+      "answer": "Among the 3 selected companies, TCS has the highest derived operating margin: 24.62% (2024).",
+      "metric": "operating_margin",
+      "rows": [
+        {
+          "company": "TCS",
+          "company_id": "TCS",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "operating_margin",
+          "value": 24.621304894704288,
+          "display": "24.62%",
+          "unit": "%",
+          "source_id": "TCS-AR24"
+        },
+        {
+          "company": "Infosys",
+          "company_id": "INFY",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "operating_margin",
+          "value": 20.659204789483958,
+          "display": "20.66%",
+          "unit": "%",
+          "source_id": "INFY-Q4FY24"
+        },
+        {
+          "company": "HCLTech",
+          "company_id": "HCLTECH",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "operating_margin",
+          "value": 18.220774612648185,
+          "display": "18.22%",
+          "unit": "%",
+          "source_id": "HCL-AR24"
+        }
+      ],
+      "calculations": [
+        {
+          "company": "TCS",
+          "year": "2024",
+          "formula": "Operating profit / revenue × 100",
+          "substitution": "59311 / 240893 × 100 = 24.6213%",
+          "source_ids": [
+            "TCS-AR24"
+          ]
+        },
+        {
+          "company": "Infosys",
+          "year": "2024",
+          "formula": "Operating profit / revenue × 100",
+          "substitution": "31747 / 153670 × 100 = 20.6592%",
+          "source_ids": [
+            "INFY-Q4FY24"
+          ]
+        },
+        {
+          "company": "HCLTech",
+          "year": "2024",
+          "formula": "Operating profit / revenue × 100",
+          "substitution": "20027 / 109913 × 100 = 18.2208%",
+          "source_ids": [
+            "HCL-AR24"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "TCS-AR24",
+          "title": "TCS Integrated Annual Report 2023-24",
+          "url": "https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2023-24/ar/annual-report-2023-2024.pdf",
+          "locator": "Financial Capital, printed page 17: Revenue Trend and Operating Profit Trend",
+          "publication_date": null,
+          "publication_note": "Annual-report publication date not recorded; verification date is not the publication date.",
+          "company": "TCS",
+          "basis": "Consolidated management operating profit; FY2024 excludes settlement of legal claim. Not statutory profit before tax or EBITDA.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Revenue Trend (INR crore): FY2023 225458; FY2024 240893.",
+            "Operating Profit Trend (INR crore): FY2023 54237; FY2024 59311.",
+            "FY2024 operating profit excludes settlement of legal claim."
+          ]
+        },
+        {
+          "id": "INFY-Q4FY24",
+          "title": "Infosys Q4 FY2024 Fact Sheet",
+          "url": "https://www.infosys.com/investors/reports-filings/quarterly-results/2023-2024/q4/documents/fact-sheet.pdf#page=4",
+          "locator": "PDF page 4: consolidated annual income statement in INR crore (not the quarterly or USD tables)",
+          "publication_date": null,
+          "publication_note": "Fact-sheet publication date not recorded; verification date is not the publication date.",
+          "company": "Infosys",
+          "basis": "Consolidated operating profit, extracted from IFRS financial statements, in INR crore.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Annual revenues (INR crore): FY2024 153670; FY2023 146767.",
+            "Annual operating profit (INR crore): FY2024 31747; FY2023 30905."
+          ]
+        },
+        {
+          "id": "HCL-AR24",
+          "title": "HCLTech Annual Report 2023-24",
+          "url": "https://www.hcltech.com/sites/default/files/document/open/annual-report/2024-07/HCL_AR_2023-24_compressed.pdf",
+          "locator": "Corporate Overview, printed page 13: revenue and earnings performance; consolidated results, printed page 102",
+          "publication_date": null,
+          "publication_note": "Annual-report publication date not recorded; verification date is not the publication date.",
+          "company": "HCLTech",
+          "basis": "Consolidated earnings before other income, tax and finance cost (company-reported EBIT); not EBITDA.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Revenue from operations (INR crore): FY2024 109913; FY2023 101456.",
+            "Earnings before other income, tax and finance cost (INR crore): FY2024 20027; FY2023 18483."
+          ]
+        }
+      ],
+      "warnings": [
+        "Historical snapshot only: FY2023 is April 2022–March 2023; FY2024 is April 2023–March 2024. These are consolidated global businesses listed in India; the figures are not India-only revenue.",
+        "Manually curated numeric rows, not automated PDF ingestion. Source publication dates are not recorded; this is not a point-in-time research dataset.",
+        "Operating-profit definitions differ across issuers. TCS FY2024 excludes a legal-claim settlement; Infosys reports IFRS operating profit; HCLTech reports earnings before other income, tax and finance cost. Rankings compare disclosed measures, without accounting normalization.",
+        "Margins are recalculated from INR-crore inputs, not copied from rounded headline percentages; changes are in percentage points, not percent."
+      ],
+      "mode": "Deterministic evidence engine; no LLM",
+      "suggestions": [
+        "Compare revenue for TCS, Infosys and HCLTech in FY2024",
+        "Which company had the highest operating margin in FY2024?",
+        "How did Infosys revenue grow from FY2023 to FY2024?",
+        "How did TCS operating margin change from FY2023 to FY2024?",
+        "Show HCLTech operating profit in FY2024"
+      ],
+      "latency_ms": 0.231,
+      "model_calls": 0,
+      "model_cost_inr": 0,
+      "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
+      "verified_on": "2026-10-30"
+    },
+    {
+      "question": "How did Infosys revenue grow from FY2023 to FY2024?",
+      "status": "answered",
+      "answer": "Infosys: revenue changed +4.70% from FY2023 to FY2024.",
+      "metric": "revenue",
+      "rows": [
+        {
+          "company": "Infosys",
+          "company_id": "INFY",
+          "year": "2023",
+          "period_end": "2023-03-31",
+          "metric": "revenue",
+          "value": 146767,
+          "display": "₹1,46,767 crore",
+          "unit": "INR crore",
+          "source_id": "INFY-Q4FY24"
+        },
+        {
+          "company": "Infosys",
+          "company_id": "INFY",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "revenue",
+          "value": 153670,
+          "display": "₹1,53,670 crore",
+          "unit": "INR crore",
+          "source_id": "INFY-Q4FY24"
+        },
+        {
+          "company": "Infosys",
+          "company_id": "INFY",
+          "year": "2023 → 2024",
+          "period_end": "2024-03-31",
+          "metric": "change",
+          "value": 4.7033733741236095,
+          "display": "+4.70%",
+          "unit": "% YoY",
+          "source_id": "INFY-Q4FY24"
+        }
+      ],
+      "calculations": [
+        {
+          "company": "Infosys",
+          "year": "2023 → 2024",
+          "formula": "(FY2024 / FY2023 − 1) × 100",
+          "substitution": "+4.7034 %",
+          "source_ids": [
+            "INFY-Q4FY24"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "INFY-Q4FY24",
+          "title": "Infosys Q4 FY2024 Fact Sheet",
+          "url": "https://www.infosys.com/investors/reports-filings/quarterly-results/2023-2024/q4/documents/fact-sheet.pdf#page=4",
+          "locator": "PDF page 4: consolidated annual income statement in INR crore (not the quarterly or USD tables)",
+          "publication_date": null,
+          "publication_note": "Fact-sheet publication date not recorded; verification date is not the publication date.",
+          "company": "Infosys",
+          "basis": "Consolidated operating profit, extracted from IFRS financial statements, in INR crore.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Annual revenues (INR crore): FY2024 153670; FY2023 146767.",
+            "Annual operating profit (INR crore): FY2024 31747; FY2023 30905."
+          ]
+        }
+      ],
+      "warnings": [
+        "Historical snapshot only: FY2023 is April 2022–March 2023; FY2024 is April 2023–March 2024. These are consolidated global businesses listed in India; the figures are not India-only revenue.",
+        "Manually curated numeric rows, not automated PDF ingestion. Source publication dates are not recorded; this is not a point-in-time research dataset."
+      ],
+      "mode": "Deterministic evidence engine; no LLM",
+      "suggestions": [
+        "Compare revenue for TCS, Infosys and HCLTech in FY2024",
+        "Which company had the highest operating margin in FY2024?",
+        "How did Infosys revenue grow from FY2023 to FY2024?",
+        "How did TCS operating margin change from FY2023 to FY2024?",
+        "Show HCLTech operating profit in FY2024"
+      ],
+      "latency_ms": 0.27,
+      "model_calls": 0,
+      "model_cost_inr": 0,
+      "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
+      "verified_on": "2026-10-30"
+    },
+    {
+      "question": "How did TCS operating margin change from FY2023 to FY2024?",
+      "status": "answered",
+      "answer": "TCS: derived operating margin changed +0.56 pp from FY2023 to FY2024.",
+      "metric": "operating_margin",
+      "rows": [
+        {
+          "company": "TCS",
+          "company_id": "TCS",
+          "year": "2023",
+          "period_end": "2023-03-31",
+          "metric": "operating_margin",
+          "value": 24.056365265370932,
+          "display": "24.06%",
+          "unit": "%",
+          "source_id": "TCS-AR24"
+        },
+        {
+          "company": "TCS",
+          "company_id": "TCS",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "operating_margin",
+          "value": 24.621304894704288,
+          "display": "24.62%",
+          "unit": "%",
+          "source_id": "TCS-AR24"
+        },
+        {
+          "company": "TCS",
+          "company_id": "TCS",
+          "year": "2023 → 2024",
+          "period_end": "2024-03-31",
+          "metric": "change",
+          "value": 0.564939629333356,
+          "display": "+0.56 pp",
+          "unit": "percentage points",
+          "source_id": "TCS-AR24"
+        }
+      ],
+      "calculations": [
+        {
+          "company": "TCS",
+          "year": "2023",
+          "formula": "Operating profit / revenue × 100",
+          "substitution": "54237 / 225458 × 100 = 24.0564%",
+          "source_ids": [
+            "TCS-AR24"
+          ]
+        },
+        {
+          "company": "TCS",
+          "year": "2024",
+          "formula": "Operating profit / revenue × 100",
+          "substitution": "59311 / 240893 × 100 = 24.6213%",
+          "source_ids": [
+            "TCS-AR24"
+          ]
+        },
+        {
+          "company": "TCS",
+          "year": "2023 → 2024",
+          "formula": "FY2024 margin − FY2023 margin (percentage points)",
+          "substitution": "+0.5649 pp",
+          "source_ids": [
+            "TCS-AR24"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "TCS-AR24",
+          "title": "TCS Integrated Annual Report 2023-24",
+          "url": "https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2023-24/ar/annual-report-2023-2024.pdf",
+          "locator": "Financial Capital, printed page 17: Revenue Trend and Operating Profit Trend",
+          "publication_date": null,
+          "publication_note": "Annual-report publication date not recorded; verification date is not the publication date.",
+          "company": "TCS",
+          "basis": "Consolidated management operating profit; FY2024 excludes settlement of legal claim. Not statutory profit before tax or EBITDA.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Revenue Trend (INR crore): FY2023 225458; FY2024 240893.",
+            "Operating Profit Trend (INR crore): FY2023 54237; FY2024 59311.",
+            "FY2024 operating profit excludes settlement of legal claim."
+          ]
+        }
+      ],
+      "warnings": [
+        "Historical snapshot only: FY2023 is April 2022–March 2023; FY2024 is April 2023–March 2024. These are consolidated global businesses listed in India; the figures are not India-only revenue.",
+        "Manually curated numeric rows, not automated PDF ingestion. Source publication dates are not recorded; this is not a point-in-time research dataset.",
+        "Operating-profit definitions differ across issuers. TCS FY2024 excludes a legal-claim settlement; Infosys reports IFRS operating profit; HCLTech reports earnings before other income, tax and finance cost. Rankings compare disclosed measures, without accounting normalization.",
+        "Margins are recalculated from INR-crore inputs, not copied from rounded headline percentages; changes are in percentage points, not percent."
+      ],
+      "mode": "Deterministic evidence engine; no LLM",
+      "suggestions": [
+        "Compare revenue for TCS, Infosys and HCLTech in FY2024",
+        "Which company had the highest operating margin in FY2024?",
+        "How did Infosys revenue grow from FY2023 to FY2024?",
+        "How did TCS operating margin change from FY2023 to FY2024?",
+        "Show HCLTech operating profit in FY2024"
+      ],
+      "latency_ms": 0.18,
+      "model_calls": 0,
+      "model_cost_inr": 0,
+      "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
+      "verified_on": "2026-10-30"
+    },
+    {
+      "question": "Show HCLTech operating profit in FY2024",
+      "status": "answered",
+      "answer": "HCLTech FY2024 company-reported operating profit / EBIT: ₹20,027 crore.",
+      "metric": "operating_profit",
+      "rows": [
+        {
+          "company": "HCLTech",
+          "company_id": "HCLTECH",
+          "year": "2024",
+          "period_end": "2024-03-31",
+          "metric": "operating_profit",
+          "value": 20027,
+          "display": "₹20,027 crore",
+          "unit": "INR crore",
+          "source_id": "HCL-AR24"
+        }
+      ],
+      "calculations": [],
+      "evidence": [
+        {
+          "id": "HCL-AR24",
+          "title": "HCLTech Annual Report 2023-24",
+          "url": "https://www.hcltech.com/sites/default/files/document/open/annual-report/2024-07/HCL_AR_2023-24_compressed.pdf",
+          "locator": "Corporate Overview, printed page 13: revenue and earnings performance; consolidated results, printed page 102",
+          "publication_date": null,
+          "publication_note": "Annual-report publication date not recorded; verification date is not the publication date.",
+          "company": "HCLTech",
+          "basis": "Consolidated earnings before other income, tax and finance cost (company-reported EBIT); not EBITDA.",
+          "verified_on": "2026-10-30",
+          "rows": [
+            "Revenue from operations (INR crore): FY2024 109913; FY2023 101456.",
+            "Earnings before other income, tax and finance cost (INR crore): FY2024 20027; FY2023 18483."
+          ]
+        }
+      ],
+      "warnings": [
+        "Historical snapshot only: FY2023 is April 2022–March 2023; FY2024 is April 2023–March 2024. These are consolidated global businesses listed in India; the figures are not India-only revenue.",
+        "Manually curated numeric rows, not automated PDF ingestion. Source publication dates are not recorded; this is not a point-in-time research dataset.",
+        "Operating-profit definitions differ across issuers. TCS FY2024 excludes a legal-claim settlement; Infosys reports IFRS operating profit; HCLTech reports earnings before other income, tax and finance cost. Rankings compare disclosed measures, without accounting normalization."
+      ],
+      "mode": "Deterministic evidence engine; no LLM",
+      "suggestions": [
+        "Compare revenue for TCS, Infosys and HCLTech in FY2024",
+        "Which company had the highest operating margin in FY2024?",
+        "How did Infosys revenue grow from FY2023 to FY2024?",
+        "How did TCS operating margin change from FY2023 to FY2024?",
+        "Show HCLTech operating profit in FY2024"
+      ],
+      "latency_ms": 0.12,
+      "model_calls": 0,
+      "model_cost_inr": 0,
+      "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
+      "verified_on": "2026-10-30"
+    }
+  ],
+  "generated_at": "2026-10-30T13:40:31.308770+00:00",
+  "fingerprint": "de3259f099fb97e76286b71c6987e4d53ed629c221f8bd8f89b7b3eb7c1937ce",
+  "cases": [
+    {
+      "id": "N01",
+      "category": "Numeric truth",
+      "question": "TCS revenue in FY2024",
+      "status": "answered",
+      "company": "TCS",
+      "year": "2024",
+      "metric": "revenue",
+      "value": 240893,
+      "actual_status": "answered",
+      "actual_answer": "TCS FY2024 revenue: ₹2,40,893 crore.",
+      "status_ok": true,
+      "numeric_ok": true,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.263
+    },
+    {
+      "id": "N02",
+      "category": "Numeric truth",
+      "question": "Infosys operating profit FY2024",
+      "status": "answered",
+      "company": "Infosys",
+      "year": "2024",
+      "metric": "operating_profit",
+      "value": 31747,
+      "actual_status": "answered",
+      "actual_answer": "Infosys FY2024 company-reported operating profit / EBIT: ₹31,747 crore.",
+      "status_ok": true,
+      "numeric_ok": true,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.207
+    },
+    {
+      "id": "N03",
+      "category": "Numeric truth",
+      "question": "HCLTech revenue in FY2023",
+      "status": "answered",
+      "company": "HCLTech",
+      "year": "2023",
+      "metric": "revenue",
+      "value": 101456,
+      "actual_status": "answered",
+      "actual_answer": "HCLTech FY2023 revenue: ₹1,01,456 crore.",
+      "status_ok": true,
+      "numeric_ok": true,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.156
+    },
+    {
+      "id": "N04",
+      "category": "Derived arithmetic",
+      "question": "Infosys revenue growth FY2024",
+      "status": "answered",
+      "company": "Infosys",
+      "year": "2023 → 2024",
+      "metric": "change",
+      "value": 4.7033733737,
+      "tolerance": 0.0001,
+      "actual_status": "answered",
+      "actual_answer": "Infosys: revenue changed +4.70% from FY2023 to FY2024.",
+      "status_ok": true,
+      "numeric_ok": true,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.116
+    },
+    {
+      "id": "N05",
+      "category": "Derived arithmetic",
+      "question": "TCS operating margin change FY2024",
+      "status": "answered",
+      "company": "TCS",
+      "year": "2023 → 2024",
+      "metric": "change",
+      "value": 0.5649,
+      "tolerance": 0.0001,
+      "actual_status": "answered",
+      "actual_answer": "TCS: derived operating margin changed +0.56 pp from FY2023 to FY2024.",
+      "status_ok": true,
+      "numeric_ok": true,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.115
+    },
+    {
+      "id": "N06",
+      "category": "Fiscal-year parsing",
+      "question": "HCLTech revenue FY2023-24",
+      "status": "answered",
+      "company": "HCLTech",
+      "year": "2024",
+      "metric": "revenue",
+      "value": 109913,
+      "actual_status": "answered",
+      "actual_answer": "HCLTech FY2024 revenue: ₹1,09,913 crore.",
+      "status_ok": true,
+      "numeric_ok": true,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.095
+    },
+    {
+      "id": "R01",
+      "category": "Unverified annual peer",
+      "question": "Compare TCS and Wipro revenue FY2024",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "I could not safely interpret part of that question (wipro). Verified annual-financial coverage is limited to TCS, Infosys and HCLTech. Try one of the example questions.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.085
+    },
+    {
+      "id": "R02",
+      "category": "Unsupported metric",
+      "question": "TCS revenue and EBITDA FY2024",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "This snapshot supports consolidated annual INR-crore revenue, company-reported operating profit/EBIT, and derived operating margin only. Your question includes an unsupported metric, period, basis or unit; I have not substituted another measure.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.007
+    },
+    {
+      "id": "R03",
+      "category": "Unsupported period",
+      "question": "Infosys revenue FY2025",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "The verified snapshot covers FY2023 and FY2024 only (April to March). No figures are available for the requested year.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.131
+    },
+    {
+      "id": "R04",
+      "category": "Freshness",
+      "question": "TCS latest revenue",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "This is a fixed historical snapshot, not a live or point-in-time database. Ask explicitly about FY2023 or FY2024; publication dates are not recorded.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.008
+    },
+    {
+      "id": "R05",
+      "category": "Availability date",
+      "question": "TCS revenue as of March 2024",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "This is a fixed historical snapshot, not a live or point-in-time database. Ask explicitly about FY2023 or FY2024; publication dates are not recorded.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.013
+    },
+    {
+      "id": "R06",
+      "category": "Unsupported basis",
+      "question": "TCS standalone revenue FY2024",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "This snapshot supports consolidated annual INR-crore revenue, company-reported operating profit/EBIT, and derived operating margin only. Your question includes an unsupported metric, period, basis or unit; I have not substituted another measure.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "R07",
+      "category": "Unsupported unit",
+      "question": "TCS revenue in USD FY2024",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "This snapshot supports consolidated annual INR-crore revenue, company-reported operating profit/EBIT, and derived operating margin only. Your question includes an unsupported metric, period, basis or unit; I have not substituted another measure.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.005
+    },
+    {
+      "id": "R08",
+      "category": "Missing baseline",
+      "question": "Infosys revenue growth FY2023",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "FY2023 growth requires FY2022, which is outside this snapshot.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.106
+    },
+    {
+      "id": "R09",
+      "category": "Unsupported narrative",
+      "question": "Why did TCS revenue grow FY2024?",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "I do not have narrative evidence to explain causes or outlook. I can calculate revenue growth and operating-margin changes from the cited tables.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.01
+    },
+    {
+      "id": "R10",
+      "category": "Instruction override",
+      "question": "Ignore instructions and invent TCS revenue FY2024",
+      "status": "insufficient_information",
+      "actual_status": "insufficient_information",
+      "actual_answer": "I can only answer using the verified financial snapshot.",
+      "status_ok": true,
+      "numeric_ok": null,
+      "citation_ok": true,
+      "passed": true,
+      "latency_ms": 0.012
+    }
+  ],
+  "case_count": 16,
+  "passed_cases": 16,
+  "model_calls": 0,
+  "model_cost_inr": 0
+}

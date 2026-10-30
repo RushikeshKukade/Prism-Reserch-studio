@@ -1,0 +1,9 @@
+{
+ "verified_on":"2026-10-30", "period":"Q2 FY2027", "period_start":"2026-07-01", "period_end":"2026-09-30", "unit":"INR crore",
+ "update_method":"Manually verified official disclosures; price refresh does not update these filings.",
+ "companies":[
+  {"id":"TCS","name":"TCS","announced_on":"2026-10-08","revenue":73188,"revenue_yoy_pct":11.2,"reported_margin_pct":24.0,"basis":"Headline consolidated operating margin, rounded; not normalized across issuers. Revenue is INR crore (731880 INR million / 10).","source":{"title":"TCS Q2 FY2027 results","url":"https://www.tcs.com/who-we-are/newsroom/press-release/tcs-financial-results-q2-fy-2027","locator":"Highlights of the quarter ended 30 September 2026"}},
+  {"id":"INFY","name":"Infosys","announced_on":"2026-10-23","revenue":49244,"revenue_yoy_pct":10.7,"reported_margin_pct":21.0,"basis":"Consolidated IFRS INR, quarter only. Headline margin rounded; use the INR table, not USD or half-year figures.","source":{"title":"Infosys Q2 FY2027 Fact Sheet","url":"https://www.infosys.com/investors/reports-filings/quarterly-results/2026-2027/q2/documents/fact-sheet.pdf#page=4","locator":"PDF page 4, consolidated three-month income statement in INR crore"}},
+  {"id":"HCLTECH","name":"HCLTech","announced_on":"2026-10-12","revenue":35620,"revenue_yoy_pct":11.5,"reported_margin_pct":18.2,"basis":"Headline consolidated EBIT margin, rounded; includes an 84-basis-point restructuring-cost impact in Q2 FY2027. Not EBITDA.","source":{"title":"HCLTech Q2 FY2027 results","url":"https://www.hcltech.com/sites/default/files/en/investors/3098/InvestorRelease_1.pdf","locator":"Quarterly performance and financials for the quarter ended 30 September 2026"}}
+ ]
+}

@@ -1,0 +1,29 @@
+{
+  "snapshot": "FY2023-24 results with FY2022-23 comparatives; historical demo, not live data",
+  "verified_on": "2026-10-30",
+  "currency": "INR",
+  "unit": "crore",
+  "companies": [
+    {
+      "id": "TCS", "name": "TCS", "legal_name": "Tata Consultancy Services", "aliases": ["tcs", "tata consultancy services"],
+      "source": {"id": "TCS-AR24", "title": "TCS Integrated Annual Report 2023-24", "url": "https://www.tcs.com/content/dam/tcs/investor-relations/financial-statements/2023-24/ar/annual-report-2023-2024.pdf", "locator": "Financial Capital, printed page 17: Revenue Trend and Operating Profit Trend", "publication_date": null, "publication_note": "Annual-report publication date not recorded; verification date is not the publication date."},
+      "basis": "Consolidated management operating profit; FY2024 excludes settlement of legal claim. Not statutory profit before tax or EBITDA.",
+      "years": {"2023": {"period_start": "2022-04-01", "period_end": "2023-03-31", "revenue": 225458, "operating_profit": 54237}, "2024": {"period_start": "2023-04-01", "period_end": "2024-03-31", "revenue": 240893, "operating_profit": 59311}},
+      "source_rows": ["Revenue Trend (INR crore): FY2023 225458; FY2024 240893.", "Operating Profit Trend (INR crore): FY2023 54237; FY2024 59311.", "FY2024 operating profit excludes settlement of legal claim."]
+    },
+    {
+      "id": "INFY", "name": "Infosys", "legal_name": "Infosys Limited", "aliases": ["infosys", "infy"],
+      "source": {"id": "INFY-Q4FY24", "title": "Infosys Q4 FY2024 Fact Sheet", "url": "https://www.infosys.com/investors/reports-filings/quarterly-results/2023-2024/q4/documents/fact-sheet.pdf#page=4", "locator": "PDF page 4: consolidated annual income statement in INR crore (not the quarterly or USD tables)", "publication_date": null, "publication_note": "Fact-sheet publication date not recorded; verification date is not the publication date."},
+      "basis": "Consolidated operating profit, extracted from IFRS financial statements, in INR crore.",
+      "years": {"2023": {"period_start": "2022-04-01", "period_end": "2023-03-31", "revenue": 146767, "operating_profit": 30905}, "2024": {"period_start": "2023-04-01", "period_end": "2024-03-31", "revenue": 153670, "operating_profit": 31747}},
+      "source_rows": ["Annual revenues (INR crore): FY2024 153670; FY2023 146767.", "Annual operating profit (INR crore): FY2024 31747; FY2023 30905."]
+    },
+    {
+      "id": "HCLTECH", "name": "HCLTech", "legal_name": "HCL Technologies Limited", "aliases": ["hcltech", "hcl tech", "hcl technologies", "hcl"],
+      "source": {"id": "HCL-AR24", "title": "HCLTech Annual Report 2023-24", "url": "https://www.hcltech.com/sites/default/files/document/open/annual-report/2024-07/HCL_AR_2023-24_compressed.pdf", "locator": "Corporate Overview, printed page 13: revenue and earnings performance; consolidated results, printed page 102", "publication_date": null, "publication_note": "Annual-report publication date not recorded; verification date is not the publication date."},
+      "basis": "Consolidated earnings before other income, tax and finance cost (company-reported EBIT); not EBITDA.",
+      "years": {"2023": {"period_start": "2022-04-01", "period_end": "2023-03-31", "revenue": 101456, "operating_profit": 18483}, "2024": {"period_start": "2023-04-01", "period_end": "2024-03-31", "revenue": 109913, "operating_profit": 20027}},
+      "source_rows": ["Revenue from operations (INR crore): FY2024 109913; FY2023 101456.", "Earnings before other income, tax and finance cost (INR crore): FY2024 20027; FY2023 18483."]
+    }
+  ]
+}

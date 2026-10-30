@@ -1,0 +1,2610 @@
+{
+  "name": "NIFTY 200",
+  "retrieved_at": "2026-10-30T02:58:27.320557+05:30",
+  "source_url": "https://www.niftyindices.com/IndexConstituent/ind_nifty200list.csv",
+  "source_sha256": "27851fa65cabfc2b9cdbeaf92fdefc34ab841e8a60b3974defcc14aed7be2dd4",
+  "count": 200,
+  "membership_note": "Current constituent snapshot retrieved on the date shown; effective membership date is not independently recorded. It is not a historical or survivorship-free universe.",
+  "companies": [
+    {
+      "id": "360ONE",
+      "name": "360 ONE WAM Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE466L01038",
+      "exchange": "NSE",
+      "provider_symbol": "360ONE.NS",
+      "aliases": [
+        "360one",
+        "360 one wam ltd.",
+        "360 one wam"
+      ]
+    },
+    {
+      "id": "ABB",
+      "name": "ABB India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE117A01022",
+      "exchange": "NSE",
+      "provider_symbol": "ABB.NS",
+      "aliases": [
+        "abb",
+        "abb india ltd.",
+        "abb india"
+      ]
+    },
+    {
+      "id": "APLAPOLLO",
+      "name": "APL Apollo Tubes Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE702C01027",
+      "exchange": "NSE",
+      "provider_symbol": "APLAPOLLO.NS",
+      "aliases": [
+        "aplapollo",
+        "apl apollo tubes ltd.",
+        "apl apollo tubes"
+      ]
+    },
+    {
+      "id": "AUBANK",
+      "name": "AU Small Finance Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE949L01017",
+      "exchange": "NSE",
+      "provider_symbol": "AUBANK.NS",
+      "aliases": [
+        "aubank",
+        "au small finance bank ltd.",
+        "au small finance bank"
+      ]
+    },
+    {
+      "id": "ADANIENSOL",
+      "name": "Adani Energy Solutions Ltd.",
+      "sector": "Power",
+      "isin": "INE931S01010",
+      "exchange": "NSE",
+      "provider_symbol": "ADANIENSOL.NS",
+      "aliases": [
+        "adaniensol",
+        "adani energy solutions ltd.",
+        "adani energy solutions"
+      ]
+    },
+    {
+      "id": "ADANIENT",
+      "name": "Adani Enterprises Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE423A01024",
+      "exchange": "NSE",
+      "provider_symbol": "ADANIENT.NS",
+      "aliases": [
+        "adanient",
+        "adani enterprises ltd.",
+        "adani enterprises"
+      ]
+    },
+    {
+      "id": "ADANIGREEN",
+      "name": "Adani Green Energy Ltd.",
+      "sector": "Power",
+      "isin": "INE364U01010",
+      "exchange": "NSE",
+      "provider_symbol": "ADANIGREEN.NS",
+      "aliases": [
+        "adanigreen",
+        "adani green energy ltd.",
+        "adani green energy"
+      ]
+    },
+    {
+      "id": "ADANIPORTS",
+      "name": "Adani Ports and Special Economic Zone Ltd.",
+      "sector": "Services",
+      "isin": "INE742F01042",
+      "exchange": "NSE",
+      "provider_symbol": "ADANIPORTS.NS",
+      "aliases": [
+        "adaniports",
+        "adani ports and special economic zone ltd.",
+        "adani ports and special economic zone"
+      ]
+    },
+    {
+      "id": "ADANIPOWER",
+      "name": "Adani Power Ltd.",
+      "sector": "Power",
+      "isin": "INE814H01029",
+      "exchange": "NSE",
+      "provider_symbol": "ADANIPOWER.NS",
+      "aliases": [
+        "adanipower",
+        "adani power ltd.",
+        "adani power"
+      ]
+    },
+    {
+      "id": "ATGL",
+      "name": "Adani Total Gas Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE399L01023",
+      "exchange": "NSE",
+      "provider_symbol": "ATGL.NS",
+      "aliases": [
+        "atgl",
+        "adani total gas ltd.",
+        "adani total gas"
+      ]
+    },
+    {
+      "id": "ABCAPITAL",
+      "name": "Aditya Birla Capital Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE674K01013",
+      "exchange": "NSE",
+      "provider_symbol": "ABCAPITAL.NS",
+      "aliases": [
+        "abcapital",
+        "aditya birla capital ltd.",
+        "aditya birla capital"
+      ]
+    },
+    {
+      "id": "AMBUJACEM",
+      "name": "Ambuja Cements Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE079A01024",
+      "exchange": "NSE",
+      "provider_symbol": "AMBUJACEM.NS",
+      "aliases": [
+        "ambujacem",
+        "ambuja cements ltd.",
+        "ambuja cements"
+      ]
+    },
+    {
+      "id": "APARINDS",
+      "name": "Apar Industries Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE372A01015",
+      "exchange": "NSE",
+      "provider_symbol": "APARINDS.NS",
+      "aliases": [
+        "aparinds",
+        "apar industries ltd.",
+        "apar industries"
+      ]
+    },
+    {
+      "id": "APOLLOHOSP",
+      "name": "Apollo Hospitals Enterprise Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE437A01024",
+      "exchange": "NSE",
+      "provider_symbol": "APOLLOHOSP.NS",
+      "aliases": [
+        "apollohosp",
+        "apollo hospitals enterprise ltd.",
+        "apollo hospitals enterprise"
+      ]
+    },
+    {
+      "id": "ASHOKLEY",
+      "name": "Ashok Leyland Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE208A01029",
+      "exchange": "NSE",
+      "provider_symbol": "ASHOKLEY.NS",
+      "aliases": [
+        "ashokley",
+        "ashok leyland ltd.",
+        "ashok leyland"
+      ]
+    },
+    {
+      "id": "ASIANPAINT",
+      "name": "Asian Paints Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE021A01026",
+      "exchange": "NSE",
+      "provider_symbol": "ASIANPAINT.NS",
+      "aliases": [
+        "asianpaint",
+        "asian paints ltd.",
+        "asian paints"
+      ]
+    },
+    {
+      "id": "ASTRAL",
+      "name": "Astral Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE006I01046",
+      "exchange": "NSE",
+      "provider_symbol": "ASTRAL.NS",
+      "aliases": [
+        "astral",
+        "astral ltd.",
+        "astral"
+      ]
+    },
+    {
+      "id": "AUROPHARMA",
+      "name": "Aurobindo Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE406A01037",
+      "exchange": "NSE",
+      "provider_symbol": "AUROPHARMA.NS",
+      "aliases": [
+        "auropharma",
+        "aurobindo pharma ltd.",
+        "aurobindo pharma"
+      ]
+    },
+    {
+      "id": "DMART",
+      "name": "Avenue Supermarts Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE192R01011",
+      "exchange": "NSE",
+      "provider_symbol": "DMART.NS",
+      "aliases": [
+        "dmart",
+        "avenue supermarts ltd.",
+        "avenue supermarts"
+      ]
+    },
+    {
+      "id": "AXISBANK",
+      "name": "Axis Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE238A01034",
+      "exchange": "NSE",
+      "provider_symbol": "AXISBANK.NS",
+      "aliases": [
+        "axisbank",
+        "axis bank ltd.",
+        "axis bank"
+      ]
+    },
+    {
+      "id": "BSE",
+      "name": "BSE Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE118H01025",
+      "exchange": "NSE",
+      "provider_symbol": "BSE.NS",
+      "aliases": [
+        "bse",
+        "bse ltd.",
+        "bse"
+      ]
+    },
+    {
+      "id": "BAJAJ-AUTO",
+      "name": "Bajaj Auto Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE917I01010",
+      "exchange": "NSE",
+      "provider_symbol": "BAJAJ-AUTO.NS",
+      "aliases": [
+        "bajaj-auto",
+        "bajaj auto ltd.",
+        "bajaj auto"
+      ]
+    },
+    {
+      "id": "BAJFINANCE",
+      "name": "Bajaj Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE296A01032",
+      "exchange": "NSE",
+      "provider_symbol": "BAJFINANCE.NS",
+      "aliases": [
+        "bajfinance",
+        "bajaj finance ltd.",
+        "bajaj finance"
+      ]
+    },
+    {
+      "id": "BAJAJFINSV",
+      "name": "Bajaj Finserv Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE918I01026",
+      "exchange": "NSE",
+      "provider_symbol": "BAJAJFINSV.NS",
+      "aliases": [
+        "bajajfinsv",
+        "bajaj finserv ltd.",
+        "bajaj finserv"
+      ]
+    },
+    {
+      "id": "BAJAJHLDNG",
+      "name": "Bajaj Holdings & Investment Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE118A01012",
+      "exchange": "NSE",
+      "provider_symbol": "BAJAJHLDNG.NS",
+      "aliases": [
+        "bajajhldng",
+        "bajaj holdings & investment ltd.",
+        "bajaj holdings & investment"
+      ]
+    },
+    {
+      "id": "BANKBARODA",
+      "name": "Bank of Baroda",
+      "sector": "Financial Services",
+      "isin": "INE028A01039",
+      "exchange": "NSE",
+      "provider_symbol": "BANKBARODA.NS",
+      "aliases": [
+        "bankbaroda",
+        "bank of baroda",
+        "bank of baroda"
+      ]
+    },
+    {
+      "id": "BANKINDIA",
+      "name": "Bank of India",
+      "sector": "Financial Services",
+      "isin": "INE084A01016",
+      "exchange": "NSE",
+      "provider_symbol": "BANKINDIA.NS",
+      "aliases": [
+        "bankindia",
+        "bank of india",
+        "bank of india"
+      ]
+    },
+    {
+      "id": "MAHABANK",
+      "name": "Bank of Maharashtra",
+      "sector": "Financial Services",
+      "isin": "INE457A01014",
+      "exchange": "NSE",
+      "provider_symbol": "MAHABANK.NS",
+      "aliases": [
+        "mahabank",
+        "bank of maharashtra",
+        "bank of maharashtra"
+      ]
+    },
+    {
+      "id": "BDL",
+      "name": "Bharat Dynamics Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE171Z01026",
+      "exchange": "NSE",
+      "provider_symbol": "BDL.NS",
+      "aliases": [
+        "bdl",
+        "bharat dynamics ltd.",
+        "bharat dynamics"
+      ]
+    },
+    {
+      "id": "BEL",
+      "name": "Bharat Electronics Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE263A01024",
+      "exchange": "NSE",
+      "provider_symbol": "BEL.NS",
+      "aliases": [
+        "bel",
+        "bharat electronics ltd.",
+        "bharat electronics"
+      ]
+    },
+    {
+      "id": "BHARATFORG",
+      "name": "Bharat Forge Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE465A01025",
+      "exchange": "NSE",
+      "provider_symbol": "BHARATFORG.NS",
+      "aliases": [
+        "bharatforg",
+        "bharat forge ltd.",
+        "bharat forge"
+      ]
+    },
+    {
+      "id": "BHEL",
+      "name": "Bharat Heavy Electricals Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE257A01026",
+      "exchange": "NSE",
+      "provider_symbol": "BHEL.NS",
+      "aliases": [
+        "bhel",
+        "bharat heavy electricals ltd.",
+        "bharat heavy electricals"
+      ]
+    },
+    {
+      "id": "BPCL",
+      "name": "Bharat Petroleum Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE029A01011",
+      "exchange": "NSE",
+      "provider_symbol": "BPCL.NS",
+      "aliases": [
+        "bpcl",
+        "bharat petroleum corporation ltd.",
+        "bharat petroleum corporation"
+      ]
+    },
+    {
+      "id": "BHARTIARTL",
+      "name": "Bharti Airtel Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE397D01024",
+      "exchange": "NSE",
+      "provider_symbol": "BHARTIARTL.NS",
+      "aliases": [
+        "bhartiartl",
+        "bharti airtel ltd.",
+        "bharti airtel"
+      ]
+    },
+    {
+      "id": "GROWW",
+      "name": "Billionbrains Garage Ventures Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE0HOQ01053",
+      "exchange": "NSE",
+      "provider_symbol": "GROWW.NS",
+      "aliases": [
+        "groww",
+        "billionbrains garage ventures ltd.",
+        "billionbrains garage ventures"
+      ]
+    },
+    {
+      "id": "BIOCON",
+      "name": "Biocon Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE376G01013",
+      "exchange": "NSE",
+      "provider_symbol": "BIOCON.NS",
+      "aliases": [
+        "biocon",
+        "biocon ltd.",
+        "biocon"
+      ]
+    },
+    {
+      "id": "BLUESTARCO",
+      "name": "Blue Star Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE472A01039",
+      "exchange": "NSE",
+      "provider_symbol": "BLUESTARCO.NS",
+      "aliases": [
+        "bluestarco",
+        "blue star ltd.",
+        "blue star"
+      ]
+    },
+    {
+      "id": "BOSCHLTD",
+      "name": "Bosch Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE323A01026",
+      "exchange": "NSE",
+      "provider_symbol": "BOSCHLTD.NS",
+      "aliases": [
+        "boschltd",
+        "bosch ltd.",
+        "bosch"
+      ]
+    },
+    {
+      "id": "BRITANNIA",
+      "name": "Britannia Industries Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE216A01030",
+      "exchange": "NSE",
+      "provider_symbol": "BRITANNIA.NS",
+      "aliases": [
+        "britannia",
+        "britannia industries ltd.",
+        "britannia industries"
+      ]
+    },
+    {
+      "id": "CGPOWER",
+      "name": "CG Power and Industrial Solutions Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE067A01029",
+      "exchange": "NSE",
+      "provider_symbol": "CGPOWER.NS",
+      "aliases": [
+        "cgpower",
+        "cg power and industrial solutions ltd.",
+        "cg power and industrial solutions"
+      ]
+    },
+    {
+      "id": "CANBK",
+      "name": "Canara Bank",
+      "sector": "Financial Services",
+      "isin": "INE476A01022",
+      "exchange": "NSE",
+      "provider_symbol": "CANBK.NS",
+      "aliases": [
+        "canbk",
+        "canara bank",
+        "canara bank"
+      ]
+    },
+    {
+      "id": "CHOLAFIN",
+      "name": "Cholamandalam Investment and Finance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE121A01024",
+      "exchange": "NSE",
+      "provider_symbol": "CHOLAFIN.NS",
+      "aliases": [
+        "cholafin",
+        "cholamandalam investment and finance company ltd.",
+        "cholamandalam investment and finance company"
+      ]
+    },
+    {
+      "id": "CIPLA",
+      "name": "Cipla Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE059A01026",
+      "exchange": "NSE",
+      "provider_symbol": "CIPLA.NS",
+      "aliases": [
+        "cipla",
+        "cipla ltd.",
+        "cipla"
+      ]
+    },
+    {
+      "id": "COALINDIA",
+      "name": "Coal India Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE522F01014",
+      "exchange": "NSE",
+      "provider_symbol": "COALINDIA.NS",
+      "aliases": [
+        "coalindia",
+        "coal india ltd.",
+        "coal india"
+      ]
+    },
+    {
+      "id": "COCHINSHIP",
+      "name": "Cochin Shipyard Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE704P01025",
+      "exchange": "NSE",
+      "provider_symbol": "COCHINSHIP.NS",
+      "aliases": [
+        "cochinship",
+        "cochin shipyard ltd.",
+        "cochin shipyard"
+      ]
+    },
+    {
+      "id": "COFORGE",
+      "name": "Coforge Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE591G01025",
+      "exchange": "NSE",
+      "provider_symbol": "COFORGE.NS",
+      "aliases": [
+        "coforge",
+        "coforge ltd.",
+        "coforge"
+      ]
+    },
+    {
+      "id": "COLPAL",
+      "name": "Colgate Palmolive (India) Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE259A01022",
+      "exchange": "NSE",
+      "provider_symbol": "COLPAL.NS",
+      "aliases": [
+        "colpal",
+        "colgate palmolive (india) ltd.",
+        "colgate palmolive (india)"
+      ]
+    },
+    {
+      "id": "CONCOR",
+      "name": "Container Corporation of India Ltd.",
+      "sector": "Services",
+      "isin": "INE111A01025",
+      "exchange": "NSE",
+      "provider_symbol": "CONCOR.NS",
+      "aliases": [
+        "concor",
+        "container corporation of india ltd.",
+        "container corporation of india"
+      ]
+    },
+    {
+      "id": "CUMMINSIND",
+      "name": "Cummins India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE298A01020",
+      "exchange": "NSE",
+      "provider_symbol": "CUMMINSIND.NS",
+      "aliases": [
+        "cumminsind",
+        "cummins india ltd.",
+        "cummins india"
+      ]
+    },
+    {
+      "id": "DLF",
+      "name": "DLF Ltd.",
+      "sector": "Realty",
+      "isin": "INE271C01023",
+      "exchange": "NSE",
+      "provider_symbol": "DLF.NS",
+      "aliases": [
+        "dlf",
+        "dlf ltd.",
+        "dlf"
+      ]
+    },
+    {
+      "id": "DABUR",
+      "name": "Dabur India Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE016A01026",
+      "exchange": "NSE",
+      "provider_symbol": "DABUR.NS",
+      "aliases": [
+        "dabur",
+        "dabur india ltd.",
+        "dabur india"
+      ]
+    },
+    {
+      "id": "DIVISLAB",
+      "name": "Divi's Laboratories Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE361B01024",
+      "exchange": "NSE",
+      "provider_symbol": "DIVISLAB.NS",
+      "aliases": [
+        "divislab",
+        "divi's laboratories ltd.",
+        "divi's laboratories"
+      ]
+    },
+    {
+      "id": "DIXON",
+      "name": "Dixon Technologies (India) Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE935N01020",
+      "exchange": "NSE",
+      "provider_symbol": "DIXON.NS",
+      "aliases": [
+        "dixon",
+        "dixon technologies (india) ltd.",
+        "dixon technologies (india)"
+      ]
+    },
+    {
+      "id": "DRREDDY",
+      "name": "Dr. Reddy's Laboratories Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE089A01031",
+      "exchange": "NSE",
+      "provider_symbol": "DRREDDY.NS",
+      "aliases": [
+        "drreddy",
+        "dr. reddy's laboratories ltd.",
+        "dr. reddy's laboratories"
+      ]
+    },
+    {
+      "id": "EICHERMOT",
+      "name": "Eicher Motors Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE066A01021",
+      "exchange": "NSE",
+      "provider_symbol": "EICHERMOT.NS",
+      "aliases": [
+        "eichermot",
+        "eicher motors ltd.",
+        "eicher motors"
+      ]
+    },
+    {
+      "id": "ETERNAL",
+      "name": "Eternal Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE758T01015",
+      "exchange": "NSE",
+      "provider_symbol": "ETERNAL.NS",
+      "aliases": [
+        "eternal",
+        "eternal ltd.",
+        "eternal"
+      ]
+    },
+    {
+      "id": "EXIDEIND",
+      "name": "Exide Industries Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE302A01020",
+      "exchange": "NSE",
+      "provider_symbol": "EXIDEIND.NS",
+      "aliases": [
+        "exideind",
+        "exide industries ltd.",
+        "exide industries"
+      ]
+    },
+    {
+      "id": "NYKAA",
+      "name": "FSN E-Commerce Ventures Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE388Y01029",
+      "exchange": "NSE",
+      "provider_symbol": "NYKAA.NS",
+      "aliases": [
+        "nykaa",
+        "fsn e-commerce ventures ltd.",
+        "fsn e-commerce ventures"
+      ]
+    },
+    {
+      "id": "FEDERALBNK",
+      "name": "Federal Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE171A01029",
+      "exchange": "NSE",
+      "provider_symbol": "FEDERALBNK.NS",
+      "aliases": [
+        "federalbnk",
+        "federal bank ltd.",
+        "federal bank"
+      ]
+    },
+    {
+      "id": "FORTIS",
+      "name": "Fortis Healthcare Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE061F01013",
+      "exchange": "NSE",
+      "provider_symbol": "FORTIS.NS",
+      "aliases": [
+        "fortis",
+        "fortis healthcare ltd.",
+        "fortis healthcare"
+      ]
+    },
+    {
+      "id": "GAIL",
+      "name": "GAIL (India) Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE129A01019",
+      "exchange": "NSE",
+      "provider_symbol": "GAIL.NS",
+      "aliases": [
+        "gail",
+        "gail (india) ltd.",
+        "gail (india)"
+      ]
+    },
+    {
+      "id": "GVT&D",
+      "name": "GE Vernova T&D India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE200A01026",
+      "exchange": "NSE",
+      "provider_symbol": "GVT&D.NS",
+      "aliases": [
+        "gvt&d",
+        "ge vernova t&d india ltd.",
+        "ge vernova t&d india"
+      ]
+    },
+    {
+      "id": "GMRAIRPORT",
+      "name": "GMR Airports Ltd.",
+      "sector": "Services",
+      "isin": "INE776C01039",
+      "exchange": "NSE",
+      "provider_symbol": "GMRAIRPORT.NS",
+      "aliases": [
+        "gmrairport",
+        "gmr airports ltd.",
+        "gmr airports"
+      ]
+    },
+    {
+      "id": "GLENMARK",
+      "name": "Glenmark Pharmaceuticals Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE935A01035",
+      "exchange": "NSE",
+      "provider_symbol": "GLENMARK.NS",
+      "aliases": [
+        "glenmark",
+        "glenmark pharmaceuticals ltd.",
+        "glenmark pharmaceuticals"
+      ]
+    },
+    {
+      "id": "GODFRYPHLP",
+      "name": "Godfrey Phillips India Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE260B01028",
+      "exchange": "NSE",
+      "provider_symbol": "GODFRYPHLP.NS",
+      "aliases": [
+        "godfryphlp",
+        "godfrey phillips india ltd.",
+        "godfrey phillips india"
+      ]
+    },
+    {
+      "id": "GODREJCP",
+      "name": "Godrej Consumer Products Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE102D01028",
+      "exchange": "NSE",
+      "provider_symbol": "GODREJCP.NS",
+      "aliases": [
+        "godrejcp",
+        "godrej consumer products ltd.",
+        "godrej consumer products"
+      ]
+    },
+    {
+      "id": "GODREJPROP",
+      "name": "Godrej Properties Ltd.",
+      "sector": "Realty",
+      "isin": "INE484J01027",
+      "exchange": "NSE",
+      "provider_symbol": "GODREJPROP.NS",
+      "aliases": [
+        "godrejprop",
+        "godrej properties ltd.",
+        "godrej properties"
+      ]
+    },
+    {
+      "id": "GRASIM",
+      "name": "Grasim Industries Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE047A01021",
+      "exchange": "NSE",
+      "provider_symbol": "GRASIM.NS",
+      "aliases": [
+        "grasim",
+        "grasim industries ltd.",
+        "grasim industries"
+      ]
+    },
+    {
+      "id": "HCLTECH",
+      "name": "HCL Technologies Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE860A01027",
+      "exchange": "NSE",
+      "provider_symbol": "HCLTECH.NS",
+      "aliases": [
+        "hcltech",
+        "hcl technologies ltd.",
+        "hcl technologies"
+      ]
+    },
+    {
+      "id": "HDFCAMC",
+      "name": "HDFC Asset Management Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE127D01025",
+      "exchange": "NSE",
+      "provider_symbol": "HDFCAMC.NS",
+      "aliases": [
+        "hdfcamc",
+        "hdfc asset management company ltd.",
+        "hdfc asset management company"
+      ]
+    },
+    {
+      "id": "HDFCBANK",
+      "name": "HDFC Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE040A01034",
+      "exchange": "NSE",
+      "provider_symbol": "HDFCBANK.NS",
+      "aliases": [
+        "hdfcbank",
+        "hdfc bank ltd.",
+        "hdfc bank"
+      ]
+    },
+    {
+      "id": "HDFCLIFE",
+      "name": "HDFC Life Insurance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE795G01014",
+      "exchange": "NSE",
+      "provider_symbol": "HDFCLIFE.NS",
+      "aliases": [
+        "hdfclife",
+        "hdfc life insurance company ltd.",
+        "hdfc life insurance company"
+      ]
+    },
+    {
+      "id": "HAVELLS",
+      "name": "Havells India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE176B01034",
+      "exchange": "NSE",
+      "provider_symbol": "HAVELLS.NS",
+      "aliases": [
+        "havells",
+        "havells india ltd.",
+        "havells india"
+      ]
+    },
+    {
+      "id": "HEROMOTOCO",
+      "name": "Hero MotoCorp Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE158A01026",
+      "exchange": "NSE",
+      "provider_symbol": "HEROMOTOCO.NS",
+      "aliases": [
+        "heromotoco",
+        "hero motocorp ltd.",
+        "hero motocorp"
+      ]
+    },
+    {
+      "id": "HINDALCO",
+      "name": "Hindalco Industries Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE038A01020",
+      "exchange": "NSE",
+      "provider_symbol": "HINDALCO.NS",
+      "aliases": [
+        "hindalco",
+        "hindalco industries ltd.",
+        "hindalco industries"
+      ]
+    },
+    {
+      "id": "HAL",
+      "name": "Hindustan Aeronautics Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE066F01020",
+      "exchange": "NSE",
+      "provider_symbol": "HAL.NS",
+      "aliases": [
+        "hal",
+        "hindustan aeronautics ltd.",
+        "hindustan aeronautics"
+      ]
+    },
+    {
+      "id": "HINDCOPPER",
+      "name": "Hindustan Copper Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE531E01026",
+      "exchange": "NSE",
+      "provider_symbol": "HINDCOPPER.NS",
+      "aliases": [
+        "hindcopper",
+        "hindustan copper ltd.",
+        "hindustan copper"
+      ]
+    },
+    {
+      "id": "HINDPETRO",
+      "name": "Hindustan Petroleum Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE094A01015",
+      "exchange": "NSE",
+      "provider_symbol": "HINDPETRO.NS",
+      "aliases": [
+        "hindpetro",
+        "hindustan petroleum corporation ltd.",
+        "hindustan petroleum corporation"
+      ]
+    },
+    {
+      "id": "HINDUNILVR",
+      "name": "Hindustan Unilever Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE030A01027",
+      "exchange": "NSE",
+      "provider_symbol": "HINDUNILVR.NS",
+      "aliases": [
+        "hindunilvr",
+        "hindustan unilever ltd.",
+        "hindustan unilever"
+      ]
+    },
+    {
+      "id": "HINDZINC",
+      "name": "Hindustan Zinc Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE267A01025",
+      "exchange": "NSE",
+      "provider_symbol": "HINDZINC.NS",
+      "aliases": [
+        "hindzinc",
+        "hindustan zinc ltd.",
+        "hindustan zinc"
+      ]
+    },
+    {
+      "id": "POWERINDIA",
+      "name": "Hitachi Energy India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE07Y701011",
+      "exchange": "NSE",
+      "provider_symbol": "POWERINDIA.NS",
+      "aliases": [
+        "powerindia",
+        "hitachi energy india ltd.",
+        "hitachi energy india"
+      ]
+    },
+    {
+      "id": "HYUNDAI",
+      "name": "Hyundai Motor India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE0V6F01027",
+      "exchange": "NSE",
+      "provider_symbol": "HYUNDAI.NS",
+      "aliases": [
+        "hyundai",
+        "hyundai motor india ltd.",
+        "hyundai motor india"
+      ]
+    },
+    {
+      "id": "ICICIBANK",
+      "name": "ICICI Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE090A01021",
+      "exchange": "NSE",
+      "provider_symbol": "ICICIBANK.NS",
+      "aliases": [
+        "icicibank",
+        "icici bank ltd.",
+        "icici bank"
+      ]
+    },
+    {
+      "id": "ICICIGI",
+      "name": "ICICI Lombard General Insurance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE765G01017",
+      "exchange": "NSE",
+      "provider_symbol": "ICICIGI.NS",
+      "aliases": [
+        "icicigi",
+        "icici lombard general insurance company ltd.",
+        "icici lombard general insurance company"
+      ]
+    },
+    {
+      "id": "ICICIAMC",
+      "name": "ICICI Prudential Asset Management Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE346A01027",
+      "exchange": "NSE",
+      "provider_symbol": "ICICIAMC.NS",
+      "aliases": [
+        "iciciamc",
+        "icici prudential asset management company ltd.",
+        "icici prudential asset management company"
+      ]
+    },
+    {
+      "id": "IDFCFIRSTB",
+      "name": "IDFC First Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE092T01019",
+      "exchange": "NSE",
+      "provider_symbol": "IDFCFIRSTB.NS",
+      "aliases": [
+        "idfcfirstb",
+        "idfc first bank ltd.",
+        "idfc first bank"
+      ]
+    },
+    {
+      "id": "ITC",
+      "name": "ITC Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE154A01025",
+      "exchange": "NSE",
+      "provider_symbol": "ITC.NS",
+      "aliases": [
+        "itc",
+        "itc ltd.",
+        "itc"
+      ]
+    },
+    {
+      "id": "INDIANB",
+      "name": "Indian Bank",
+      "sector": "Financial Services",
+      "isin": "INE562A01011",
+      "exchange": "NSE",
+      "provider_symbol": "INDIANB.NS",
+      "aliases": [
+        "indianb",
+        "indian bank",
+        "indian bank"
+      ]
+    },
+    {
+      "id": "INDHOTEL",
+      "name": "Indian Hotels Co. Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE053A01029",
+      "exchange": "NSE",
+      "provider_symbol": "INDHOTEL.NS",
+      "aliases": [
+        "indhotel",
+        "indian hotels co. ltd.",
+        "indian hotels co."
+      ]
+    },
+    {
+      "id": "IOC",
+      "name": "Indian Oil Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE242A01010",
+      "exchange": "NSE",
+      "provider_symbol": "IOC.NS",
+      "aliases": [
+        "ioc",
+        "indian oil corporation ltd.",
+        "indian oil corporation"
+      ]
+    },
+    {
+      "id": "IRCTC",
+      "name": "Indian Railway Catering And Tourism Corporation Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE335Y01020",
+      "exchange": "NSE",
+      "provider_symbol": "IRCTC.NS",
+      "aliases": [
+        "irctc",
+        "indian railway catering and tourism corporation ltd.",
+        "indian railway catering and tourism corporation"
+      ]
+    },
+    {
+      "id": "IRFC",
+      "name": "Indian Railway Finance Corporation Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE053F01010",
+      "exchange": "NSE",
+      "provider_symbol": "IRFC.NS",
+      "aliases": [
+        "irfc",
+        "indian railway finance corporation ltd.",
+        "indian railway finance corporation"
+      ]
+    },
+    {
+      "id": "IREDA",
+      "name": "Indian Renewable Energy Development Agency Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE202E01016",
+      "exchange": "NSE",
+      "provider_symbol": "IREDA.NS",
+      "aliases": [
+        "ireda",
+        "indian renewable energy development agency ltd.",
+        "indian renewable energy development agency"
+      ]
+    },
+    {
+      "id": "INDUSTOWER",
+      "name": "Indus Towers Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE121J01017",
+      "exchange": "NSE",
+      "provider_symbol": "INDUSTOWER.NS",
+      "aliases": [
+        "industower",
+        "indus towers ltd.",
+        "indus towers"
+      ]
+    },
+    {
+      "id": "INDUSINDBK",
+      "name": "IndusInd Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE095A01012",
+      "exchange": "NSE",
+      "provider_symbol": "INDUSINDBK.NS",
+      "aliases": [
+        "indusindbk",
+        "indusind bank ltd.",
+        "indusind bank"
+      ]
+    },
+    {
+      "id": "NAUKRI",
+      "name": "Info Edge (India) Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE663F01032",
+      "exchange": "NSE",
+      "provider_symbol": "NAUKRI.NS",
+      "aliases": [
+        "naukri",
+        "info edge (india) ltd.",
+        "info edge (india)"
+      ]
+    },
+    {
+      "id": "INFY",
+      "name": "Infosys Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE009A01021",
+      "exchange": "NSE",
+      "provider_symbol": "INFY.NS",
+      "aliases": [
+        "infy",
+        "infosys ltd.",
+        "infosys"
+      ]
+    },
+    {
+      "id": "INDIGO",
+      "name": "InterGlobe Aviation Ltd.",
+      "sector": "Services",
+      "isin": "INE646L01027",
+      "exchange": "NSE",
+      "provider_symbol": "INDIGO.NS",
+      "aliases": [
+        "indigo",
+        "interglobe aviation ltd.",
+        "interglobe aviation"
+      ]
+    },
+    {
+      "id": "JSWENERGY",
+      "name": "JSW Energy Ltd.",
+      "sector": "Power",
+      "isin": "INE121E01018",
+      "exchange": "NSE",
+      "provider_symbol": "JSWENERGY.NS",
+      "aliases": [
+        "jswenergy",
+        "jsw energy ltd.",
+        "jsw energy"
+      ]
+    },
+    {
+      "id": "JSWSTEEL",
+      "name": "JSW Steel Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE019A01038",
+      "exchange": "NSE",
+      "provider_symbol": "JSWSTEEL.NS",
+      "aliases": [
+        "jswsteel",
+        "jsw steel ltd.",
+        "jsw steel"
+      ]
+    },
+    {
+      "id": "JINDALSTEL",
+      "name": "Jindal Steel Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE749A01030",
+      "exchange": "NSE",
+      "provider_symbol": "JINDALSTEL.NS",
+      "aliases": [
+        "jindalstel",
+        "jindal steel ltd.",
+        "jindal steel"
+      ]
+    },
+    {
+      "id": "JIOFIN",
+      "name": "Jio Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE758E01017",
+      "exchange": "NSE",
+      "provider_symbol": "JIOFIN.NS",
+      "aliases": [
+        "jiofin",
+        "jio financial services ltd.",
+        "jio financial services"
+      ]
+    },
+    {
+      "id": "JUBLFOOD",
+      "name": "Jubilant Foodworks Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE797F01020",
+      "exchange": "NSE",
+      "provider_symbol": "JUBLFOOD.NS",
+      "aliases": [
+        "jublfood",
+        "jubilant foodworks ltd.",
+        "jubilant foodworks"
+      ]
+    },
+    {
+      "id": "KEI",
+      "name": "KEI Industries Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE878B01027",
+      "exchange": "NSE",
+      "provider_symbol": "KEI.NS",
+      "aliases": [
+        "kei",
+        "kei industries ltd.",
+        "kei industries"
+      ]
+    },
+    {
+      "id": "KALYANKJIL",
+      "name": "Kalyan Jewellers India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE303R01014",
+      "exchange": "NSE",
+      "provider_symbol": "KALYANKJIL.NS",
+      "aliases": [
+        "kalyankjil",
+        "kalyan jewellers india ltd.",
+        "kalyan jewellers india"
+      ]
+    },
+    {
+      "id": "KOTAKBANK",
+      "name": "Kotak Mahindra Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE237A01036",
+      "exchange": "NSE",
+      "provider_symbol": "KOTAKBANK.NS",
+      "aliases": [
+        "kotakbank",
+        "kotak mahindra bank ltd.",
+        "kotak mahindra bank"
+      ]
+    },
+    {
+      "id": "LTF",
+      "name": "L&T Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE498L01015",
+      "exchange": "NSE",
+      "provider_symbol": "LTF.NS",
+      "aliases": [
+        "ltf",
+        "l&t finance ltd.",
+        "l&t finance"
+      ]
+    },
+    {
+      "id": "LGEINDIA",
+      "name": "LG Electronics India Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE324D01010",
+      "exchange": "NSE",
+      "provider_symbol": "LGEINDIA.NS",
+      "aliases": [
+        "lgeindia",
+        "lg electronics india ltd.",
+        "lg electronics india"
+      ]
+    },
+    {
+      "id": "LICHSGFIN",
+      "name": "LIC Housing Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE115A01026",
+      "exchange": "NSE",
+      "provider_symbol": "LICHSGFIN.NS",
+      "aliases": [
+        "lichsgfin",
+        "lic housing finance ltd.",
+        "lic housing finance"
+      ]
+    },
+    {
+      "id": "LTM",
+      "name": "LTM Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE214T01019",
+      "exchange": "NSE",
+      "provider_symbol": "LTM.NS",
+      "aliases": [
+        "ltm",
+        "ltm ltd.",
+        "ltm"
+      ]
+    },
+    {
+      "id": "LT",
+      "name": "Larsen & Toubro Ltd.",
+      "sector": "Construction",
+      "isin": "INE018A01030",
+      "exchange": "NSE",
+      "provider_symbol": "LT.NS",
+      "aliases": [
+        "lt",
+        "larsen & toubro ltd.",
+        "larsen & toubro"
+      ]
+    },
+    {
+      "id": "LAURUSLABS",
+      "name": "Laurus Labs Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE947Q01028",
+      "exchange": "NSE",
+      "provider_symbol": "LAURUSLABS.NS",
+      "aliases": [
+        "lauruslabs",
+        "laurus labs ltd.",
+        "laurus labs"
+      ]
+    },
+    {
+      "id": "LENSKART",
+      "name": "Lenskart Solutions Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE956O01016",
+      "exchange": "NSE",
+      "provider_symbol": "LENSKART.NS",
+      "aliases": [
+        "lenskart",
+        "lenskart solutions ltd.",
+        "lenskart solutions"
+      ]
+    },
+    {
+      "id": "LICI",
+      "name": "Life Insurance Corporation of India",
+      "sector": "Financial Services",
+      "isin": "INE0J1Y01017",
+      "exchange": "NSE",
+      "provider_symbol": "LICI.NS",
+      "aliases": [
+        "lici",
+        "life insurance corporation of india",
+        "life insurance corporation of india"
+      ]
+    },
+    {
+      "id": "LODHA",
+      "name": "Lodha Developers Ltd.",
+      "sector": "Realty",
+      "isin": "INE670K01029",
+      "exchange": "NSE",
+      "provider_symbol": "LODHA.NS",
+      "aliases": [
+        "lodha",
+        "lodha developers ltd.",
+        "lodha developers"
+      ]
+    },
+    {
+      "id": "LUPIN",
+      "name": "Lupin Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE326A01037",
+      "exchange": "NSE",
+      "provider_symbol": "LUPIN.NS",
+      "aliases": [
+        "lupin",
+        "lupin ltd.",
+        "lupin"
+      ]
+    },
+    {
+      "id": "MRF",
+      "name": "MRF Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE883A01011",
+      "exchange": "NSE",
+      "provider_symbol": "MRF.NS",
+      "aliases": [
+        "mrf",
+        "mrf ltd.",
+        "mrf"
+      ]
+    },
+    {
+      "id": "M&MFIN",
+      "name": "Mahindra & Mahindra Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE774D01024",
+      "exchange": "NSE",
+      "provider_symbol": "M&MFIN.NS",
+      "aliases": [
+        "m&mfin",
+        "mahindra & mahindra financial services ltd.",
+        "mahindra & mahindra financial services"
+      ]
+    },
+    {
+      "id": "M&M",
+      "name": "Mahindra & Mahindra Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE101A01026",
+      "exchange": "NSE",
+      "provider_symbol": "M&M.NS",
+      "aliases": [
+        "m&m",
+        "mahindra & mahindra ltd.",
+        "mahindra & mahindra"
+      ]
+    },
+    {
+      "id": "MANKIND",
+      "name": "Mankind Pharma Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE634S01028",
+      "exchange": "NSE",
+      "provider_symbol": "MANKIND.NS",
+      "aliases": [
+        "mankind",
+        "mankind pharma ltd.",
+        "mankind pharma"
+      ]
+    },
+    {
+      "id": "MARICO",
+      "name": "Marico Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE196A01026",
+      "exchange": "NSE",
+      "provider_symbol": "MARICO.NS",
+      "aliases": [
+        "marico",
+        "marico ltd.",
+        "marico"
+      ]
+    },
+    {
+      "id": "MARUTI",
+      "name": "Maruti Suzuki India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE585B01010",
+      "exchange": "NSE",
+      "provider_symbol": "MARUTI.NS",
+      "aliases": [
+        "maruti",
+        "maruti suzuki india ltd.",
+        "maruti suzuki india"
+      ]
+    },
+    {
+      "id": "MFSL",
+      "name": "Max Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE180A01020",
+      "exchange": "NSE",
+      "provider_symbol": "MFSL.NS",
+      "aliases": [
+        "mfsl",
+        "max financial services ltd.",
+        "max financial services"
+      ]
+    },
+    {
+      "id": "MAXHEALTH",
+      "name": "Max Healthcare Institute Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE027H01010",
+      "exchange": "NSE",
+      "provider_symbol": "MAXHEALTH.NS",
+      "aliases": [
+        "maxhealth",
+        "max healthcare institute ltd.",
+        "max healthcare institute"
+      ]
+    },
+    {
+      "id": "MAZDOCK",
+      "name": "Mazagoan Dock Shipbuilders Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE249Z01020",
+      "exchange": "NSE",
+      "provider_symbol": "MAZDOCK.NS",
+      "aliases": [
+        "mazdock",
+        "mazagoan dock shipbuilders ltd.",
+        "mazagoan dock shipbuilders"
+      ]
+    },
+    {
+      "id": "MEESHO",
+      "name": "Meesho Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE0VDM01015",
+      "exchange": "NSE",
+      "provider_symbol": "MEESHO.NS",
+      "aliases": [
+        "meesho",
+        "meesho ltd.",
+        "meesho"
+      ]
+    },
+    {
+      "id": "MOTILALOFS",
+      "name": "Motilal Oswal Financial Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE338I01027",
+      "exchange": "NSE",
+      "provider_symbol": "MOTILALOFS.NS",
+      "aliases": [
+        "motilalofs",
+        "motilal oswal financial services ltd.",
+        "motilal oswal financial services"
+      ]
+    },
+    {
+      "id": "MPHASIS",
+      "name": "MphasiS Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE356A01018",
+      "exchange": "NSE",
+      "provider_symbol": "MPHASIS.NS",
+      "aliases": [
+        "mphasis",
+        "mphasis ltd.",
+        "mphasis"
+      ]
+    },
+    {
+      "id": "MCX",
+      "name": "Multi Commodity Exchange of India Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE745G01043",
+      "exchange": "NSE",
+      "provider_symbol": "MCX.NS",
+      "aliases": [
+        "mcx",
+        "multi commodity exchange of india ltd.",
+        "multi commodity exchange of india"
+      ]
+    },
+    {
+      "id": "MUTHOOTFIN",
+      "name": "Muthoot Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE414G01012",
+      "exchange": "NSE",
+      "provider_symbol": "MUTHOOTFIN.NS",
+      "aliases": [
+        "muthootfin",
+        "muthoot finance ltd.",
+        "muthoot finance"
+      ]
+    },
+    {
+      "id": "NHPC",
+      "name": "NHPC Ltd.",
+      "sector": "Power",
+      "isin": "INE848E01016",
+      "exchange": "NSE",
+      "provider_symbol": "NHPC.NS",
+      "aliases": [
+        "nhpc",
+        "nhpc ltd.",
+        "nhpc"
+      ]
+    },
+    {
+      "id": "NLCINDIA",
+      "name": "NLC India Ltd.",
+      "sector": "Power",
+      "isin": "INE589A01014",
+      "exchange": "NSE",
+      "provider_symbol": "NLCINDIA.NS",
+      "aliases": [
+        "nlcindia",
+        "nlc india ltd.",
+        "nlc india"
+      ]
+    },
+    {
+      "id": "NMDC",
+      "name": "NMDC Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE584A01023",
+      "exchange": "NSE",
+      "provider_symbol": "NMDC.NS",
+      "aliases": [
+        "nmdc",
+        "nmdc ltd.",
+        "nmdc"
+      ]
+    },
+    {
+      "id": "NTPC",
+      "name": "NTPC Ltd.",
+      "sector": "Power",
+      "isin": "INE733E01010",
+      "exchange": "NSE",
+      "provider_symbol": "NTPC.NS",
+      "aliases": [
+        "ntpc",
+        "ntpc ltd.",
+        "ntpc"
+      ]
+    },
+    {
+      "id": "NATIONALUM",
+      "name": "National Aluminium Co. Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE139A01034",
+      "exchange": "NSE",
+      "provider_symbol": "NATIONALUM.NS",
+      "aliases": [
+        "nationalum",
+        "national aluminium co. ltd.",
+        "national aluminium co."
+      ]
+    },
+    {
+      "id": "NESTLEIND",
+      "name": "Nestle India Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE239A01024",
+      "exchange": "NSE",
+      "provider_symbol": "NESTLEIND.NS",
+      "aliases": [
+        "nestleind",
+        "nestle india ltd.",
+        "nestle india"
+      ]
+    },
+    {
+      "id": "OBEROIRLTY",
+      "name": "Oberoi Realty Ltd.",
+      "sector": "Realty",
+      "isin": "INE093I01010",
+      "exchange": "NSE",
+      "provider_symbol": "OBEROIRLTY.NS",
+      "aliases": [
+        "oberoirlty",
+        "oberoi realty ltd.",
+        "oberoi realty"
+      ]
+    },
+    {
+      "id": "ONGC",
+      "name": "Oil & Natural Gas Corporation Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE213A01029",
+      "exchange": "NSE",
+      "provider_symbol": "ONGC.NS",
+      "aliases": [
+        "ongc",
+        "oil & natural gas corporation ltd.",
+        "oil & natural gas corporation"
+      ]
+    },
+    {
+      "id": "OIL",
+      "name": "Oil India Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE274J01014",
+      "exchange": "NSE",
+      "provider_symbol": "OIL.NS",
+      "aliases": [
+        "oil",
+        "oil india ltd.",
+        "oil india"
+      ]
+    },
+    {
+      "id": "PAYTM",
+      "name": "One 97 Communications Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE982J01020",
+      "exchange": "NSE",
+      "provider_symbol": "PAYTM.NS",
+      "aliases": [
+        "paytm",
+        "one 97 communications ltd.",
+        "one 97 communications"
+      ]
+    },
+    {
+      "id": "OFSS",
+      "name": "Oracle Financial Services Software Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE881D01027",
+      "exchange": "NSE",
+      "provider_symbol": "OFSS.NS",
+      "aliases": [
+        "ofss",
+        "oracle financial services software ltd.",
+        "oracle financial services software"
+      ]
+    },
+    {
+      "id": "POLICYBZR",
+      "name": "PB Fintech Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE417T01026",
+      "exchange": "NSE",
+      "provider_symbol": "POLICYBZR.NS",
+      "aliases": [
+        "policybzr",
+        "pb fintech ltd.",
+        "pb fintech"
+      ]
+    },
+    {
+      "id": "PIIND",
+      "name": "PI Industries Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE603J01030",
+      "exchange": "NSE",
+      "provider_symbol": "PIIND.NS",
+      "aliases": [
+        "piind",
+        "pi industries ltd.",
+        "pi industries"
+      ]
+    },
+    {
+      "id": "PAGEIND",
+      "name": "Page Industries Ltd.",
+      "sector": "Textiles",
+      "isin": "INE761H01022",
+      "exchange": "NSE",
+      "provider_symbol": "PAGEIND.NS",
+      "aliases": [
+        "pageind",
+        "page industries ltd.",
+        "page industries"
+      ]
+    },
+    {
+      "id": "PATANJALI",
+      "name": "Patanjali Foods Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE619A01035",
+      "exchange": "NSE",
+      "provider_symbol": "PATANJALI.NS",
+      "aliases": [
+        "patanjali",
+        "patanjali foods ltd.",
+        "patanjali foods"
+      ]
+    },
+    {
+      "id": "PERSISTENT",
+      "name": "Persistent Systems Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE262H01021",
+      "exchange": "NSE",
+      "provider_symbol": "PERSISTENT.NS",
+      "aliases": [
+        "persistent",
+        "persistent systems ltd.",
+        "persistent systems"
+      ]
+    },
+    {
+      "id": "PHOENIXLTD",
+      "name": "Phoenix Mills Ltd.",
+      "sector": "Realty",
+      "isin": "INE211B01039",
+      "exchange": "NSE",
+      "provider_symbol": "PHOENIXLTD.NS",
+      "aliases": [
+        "phoenixltd",
+        "phoenix mills ltd.",
+        "phoenix mills"
+      ]
+    },
+    {
+      "id": "PIDILITIND",
+      "name": "Pidilite Industries Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE318A01026",
+      "exchange": "NSE",
+      "provider_symbol": "PIDILITIND.NS",
+      "aliases": [
+        "pidilitind",
+        "pidilite industries ltd.",
+        "pidilite industries"
+      ]
+    },
+    {
+      "id": "POLYCAB",
+      "name": "Polycab India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE455K01017",
+      "exchange": "NSE",
+      "provider_symbol": "POLYCAB.NS",
+      "aliases": [
+        "polycab",
+        "polycab india ltd.",
+        "polycab india"
+      ]
+    },
+    {
+      "id": "PFC",
+      "name": "Power Finance Corporation Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE134E01011",
+      "exchange": "NSE",
+      "provider_symbol": "PFC.NS",
+      "aliases": [
+        "pfc",
+        "power finance corporation ltd.",
+        "power finance corporation"
+      ]
+    },
+    {
+      "id": "POWERGRID",
+      "name": "Power Grid Corporation of India Ltd.",
+      "sector": "Power",
+      "isin": "INE752E01010",
+      "exchange": "NSE",
+      "provider_symbol": "POWERGRID.NS",
+      "aliases": [
+        "powergrid",
+        "power grid corporation of india ltd.",
+        "power grid corporation of india"
+      ]
+    },
+    {
+      "id": "PREMIERENE",
+      "name": "Premier Energies Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE0BS701011",
+      "exchange": "NSE",
+      "provider_symbol": "PREMIERENE.NS",
+      "aliases": [
+        "premierene",
+        "premier energies ltd.",
+        "premier energies"
+      ]
+    },
+    {
+      "id": "PRESTIGE",
+      "name": "Prestige Estates Projects Ltd.",
+      "sector": "Realty",
+      "isin": "INE811K01011",
+      "exchange": "NSE",
+      "provider_symbol": "PRESTIGE.NS",
+      "aliases": [
+        "prestige",
+        "prestige estates projects ltd.",
+        "prestige estates projects"
+      ]
+    },
+    {
+      "id": "PNB",
+      "name": "Punjab National Bank",
+      "sector": "Financial Services",
+      "isin": "INE160A01022",
+      "exchange": "NSE",
+      "provider_symbol": "PNB.NS",
+      "aliases": [
+        "pnb",
+        "punjab national bank",
+        "punjab national bank"
+      ]
+    },
+    {
+      "id": "RECLTD",
+      "name": "REC Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE020B01018",
+      "exchange": "NSE",
+      "provider_symbol": "RECLTD.NS",
+      "aliases": [
+        "recltd",
+        "rec ltd.",
+        "rec"
+      ]
+    },
+    {
+      "id": "RADICO",
+      "name": "Radico Khaitan Ltd",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE944F01028",
+      "exchange": "NSE",
+      "provider_symbol": "RADICO.NS",
+      "aliases": [
+        "radico",
+        "radico khaitan ltd",
+        "radico khaitan"
+      ]
+    },
+    {
+      "id": "RVNL",
+      "name": "Rail Vikas Nigam Ltd.",
+      "sector": "Construction",
+      "isin": "INE415G01027",
+      "exchange": "NSE",
+      "provider_symbol": "RVNL.NS",
+      "aliases": [
+        "rvnl",
+        "rail vikas nigam ltd.",
+        "rail vikas nigam"
+      ]
+    },
+    {
+      "id": "RELIANCE",
+      "name": "Reliance Industries Ltd.",
+      "sector": "Oil Gas & Consumable Fuels",
+      "isin": "INE002A01018",
+      "exchange": "NSE",
+      "provider_symbol": "RELIANCE.NS",
+      "aliases": [
+        "reliance",
+        "reliance industries ltd.",
+        "reliance industries"
+      ]
+    },
+    {
+      "id": "SBICARD",
+      "name": "SBI Cards and Payment Services Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE018E01016",
+      "exchange": "NSE",
+      "provider_symbol": "SBICARD.NS",
+      "aliases": [
+        "sbicard",
+        "sbi cards and payment services ltd.",
+        "sbi cards and payment services"
+      ]
+    },
+    {
+      "id": "SBILIFE",
+      "name": "SBI Life Insurance Company Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE123W01016",
+      "exchange": "NSE",
+      "provider_symbol": "SBILIFE.NS",
+      "aliases": [
+        "sbilife",
+        "sbi life insurance company ltd.",
+        "sbi life insurance company"
+      ]
+    },
+    {
+      "id": "SRF",
+      "name": "SRF Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE647A01010",
+      "exchange": "NSE",
+      "provider_symbol": "SRF.NS",
+      "aliases": [
+        "srf",
+        "srf ltd.",
+        "srf"
+      ]
+    },
+    {
+      "id": "MOTHERSON",
+      "name": "Samvardhana Motherson International Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE775A01035",
+      "exchange": "NSE",
+      "provider_symbol": "MOTHERSON.NS",
+      "aliases": [
+        "motherson",
+        "samvardhana motherson international ltd.",
+        "samvardhana motherson international"
+      ]
+    },
+    {
+      "id": "SHRIRAMFIN",
+      "name": "Shriram Finance Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE721A01047",
+      "exchange": "NSE",
+      "provider_symbol": "SHRIRAMFIN.NS",
+      "aliases": [
+        "shriramfin",
+        "shriram finance ltd.",
+        "shriram finance"
+      ]
+    },
+    {
+      "id": "ENRIN",
+      "name": "Siemens Energy India Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE1NPP01017",
+      "exchange": "NSE",
+      "provider_symbol": "ENRIN.NS",
+      "aliases": [
+        "enrin",
+        "siemens energy india ltd.",
+        "siemens energy india"
+      ]
+    },
+    {
+      "id": "SIEMENS",
+      "name": "Siemens Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE003A01024",
+      "exchange": "NSE",
+      "provider_symbol": "SIEMENS.NS",
+      "aliases": [
+        "siemens",
+        "siemens ltd.",
+        "siemens"
+      ]
+    },
+    {
+      "id": "SOLARINDS",
+      "name": "Solar Industries India Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE343H01029",
+      "exchange": "NSE",
+      "provider_symbol": "SOLARINDS.NS",
+      "aliases": [
+        "solarinds",
+        "solar industries india ltd.",
+        "solar industries india"
+      ]
+    },
+    {
+      "id": "SBIN",
+      "name": "State Bank of India",
+      "sector": "Financial Services",
+      "isin": "INE062A01020",
+      "exchange": "NSE",
+      "provider_symbol": "SBIN.NS",
+      "aliases": [
+        "sbin",
+        "state bank of india",
+        "state bank of india"
+      ]
+    },
+    {
+      "id": "SAIL",
+      "name": "Steel Authority of India Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE114A01011",
+      "exchange": "NSE",
+      "provider_symbol": "SAIL.NS",
+      "aliases": [
+        "sail",
+        "steel authority of india ltd.",
+        "steel authority of india"
+      ]
+    },
+    {
+      "id": "SUNPHARMA",
+      "name": "Sun Pharmaceutical Industries Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE044A01036",
+      "exchange": "NSE",
+      "provider_symbol": "SUNPHARMA.NS",
+      "aliases": [
+        "sunpharma",
+        "sun pharmaceutical industries ltd.",
+        "sun pharmaceutical industries"
+      ]
+    },
+    {
+      "id": "SUPREMEIND",
+      "name": "Supreme Industries Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE195A01028",
+      "exchange": "NSE",
+      "provider_symbol": "SUPREMEIND.NS",
+      "aliases": [
+        "supremeind",
+        "supreme industries ltd.",
+        "supreme industries"
+      ]
+    },
+    {
+      "id": "SUZLON",
+      "name": "Suzlon Energy Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE040H01021",
+      "exchange": "NSE",
+      "provider_symbol": "SUZLON.NS",
+      "aliases": [
+        "suzlon",
+        "suzlon energy ltd.",
+        "suzlon energy"
+      ]
+    },
+    {
+      "id": "SWIGGY",
+      "name": "Swiggy Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE00H001014",
+      "exchange": "NSE",
+      "provider_symbol": "SWIGGY.NS",
+      "aliases": [
+        "swiggy",
+        "swiggy ltd.",
+        "swiggy"
+      ]
+    },
+    {
+      "id": "TVSMOTOR",
+      "name": "TVS Motor Company Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE494B01023",
+      "exchange": "NSE",
+      "provider_symbol": "TVSMOTOR.NS",
+      "aliases": [
+        "tvsmotor",
+        "tvs motor company ltd.",
+        "tvs motor company"
+      ]
+    },
+    {
+      "id": "TATACAP",
+      "name": "Tata Capital Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE976I01016",
+      "exchange": "NSE",
+      "provider_symbol": "TATACAP.NS",
+      "aliases": [
+        "tatacap",
+        "tata capital ltd.",
+        "tata capital"
+      ]
+    },
+    {
+      "id": "TATACOMM",
+      "name": "Tata Communications Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE151A01013",
+      "exchange": "NSE",
+      "provider_symbol": "TATACOMM.NS",
+      "aliases": [
+        "tatacomm",
+        "tata communications ltd.",
+        "tata communications"
+      ]
+    },
+    {
+      "id": "TCS",
+      "name": "Tata Consultancy Services Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE467B01029",
+      "exchange": "NSE",
+      "provider_symbol": "TCS.NS",
+      "aliases": [
+        "tcs",
+        "tata consultancy services ltd.",
+        "tata consultancy services"
+      ]
+    },
+    {
+      "id": "TATACONSUM",
+      "name": "Tata Consumer Products Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE192A01025",
+      "exchange": "NSE",
+      "provider_symbol": "TATACONSUM.NS",
+      "aliases": [
+        "tataconsum",
+        "tata consumer products ltd.",
+        "tata consumer products"
+      ]
+    },
+    {
+      "id": "TMCV",
+      "name": "Tata Motors Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE1TAE01010",
+      "exchange": "NSE",
+      "provider_symbol": "TMCV.NS",
+      "aliases": [
+        "tmcv",
+        "tata motors ltd.",
+        "tata motors"
+      ]
+    },
+    {
+      "id": "TMPV",
+      "name": "Tata Motors Passenger Vehicles Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE155A01022",
+      "exchange": "NSE",
+      "provider_symbol": "TMPV.NS",
+      "aliases": [
+        "tmpv",
+        "tata motors passenger vehicles ltd.",
+        "tata motors passenger vehicles"
+      ]
+    },
+    {
+      "id": "TATAPOWER",
+      "name": "Tata Power Co. Ltd.",
+      "sector": "Power",
+      "isin": "INE245A01021",
+      "exchange": "NSE",
+      "provider_symbol": "TATAPOWER.NS",
+      "aliases": [
+        "tatapower",
+        "tata power co. ltd.",
+        "tata power co."
+      ]
+    },
+    {
+      "id": "TATASTEEL",
+      "name": "Tata Steel Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE081A01020",
+      "exchange": "NSE",
+      "provider_symbol": "TATASTEEL.NS",
+      "aliases": [
+        "tatasteel",
+        "tata steel ltd.",
+        "tata steel"
+      ]
+    },
+    {
+      "id": "TECHM",
+      "name": "Tech Mahindra Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE669C01036",
+      "exchange": "NSE",
+      "provider_symbol": "TECHM.NS",
+      "aliases": [
+        "techm",
+        "tech mahindra ltd.",
+        "tech mahindra"
+      ]
+    },
+    {
+      "id": "TITAN",
+      "name": "Titan Company Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE280A01028",
+      "exchange": "NSE",
+      "provider_symbol": "TITAN.NS",
+      "aliases": [
+        "titan",
+        "titan company ltd.",
+        "titan company"
+      ]
+    },
+    {
+      "id": "TORNTPHARM",
+      "name": "Torrent Pharmaceuticals Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE685A01028",
+      "exchange": "NSE",
+      "provider_symbol": "TORNTPHARM.NS",
+      "aliases": [
+        "torntpharm",
+        "torrent pharmaceuticals ltd.",
+        "torrent pharmaceuticals"
+      ]
+    },
+    {
+      "id": "TRENT",
+      "name": "Trent Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE849A01020",
+      "exchange": "NSE",
+      "provider_symbol": "TRENT.NS",
+      "aliases": [
+        "trent",
+        "trent ltd.",
+        "trent"
+      ]
+    },
+    {
+      "id": "TIINDIA",
+      "name": "Tube Investments of India Ltd.",
+      "sector": "Automobile and Auto Components",
+      "isin": "INE974X01010",
+      "exchange": "NSE",
+      "provider_symbol": "TIINDIA.NS",
+      "aliases": [
+        "tiindia",
+        "tube investments of india ltd.",
+        "tube investments of india"
+      ]
+    },
+    {
+      "id": "UPL",
+      "name": "UPL Ltd.",
+      "sector": "Chemicals",
+      "isin": "INE628A01036",
+      "exchange": "NSE",
+      "provider_symbol": "UPL.NS",
+      "aliases": [
+        "upl",
+        "upl ltd.",
+        "upl"
+      ]
+    },
+    {
+      "id": "ULTRACEMCO",
+      "name": "UltraTech Cement Ltd.",
+      "sector": "Construction Materials",
+      "isin": "INE481G01011",
+      "exchange": "NSE",
+      "provider_symbol": "ULTRACEMCO.NS",
+      "aliases": [
+        "ultracemco",
+        "ultratech cement ltd.",
+        "ultratech cement"
+      ]
+    },
+    {
+      "id": "UNIONBANK",
+      "name": "Union Bank of India",
+      "sector": "Financial Services",
+      "isin": "INE692A01016",
+      "exchange": "NSE",
+      "provider_symbol": "UNIONBANK.NS",
+      "aliases": [
+        "unionbank",
+        "union bank of india",
+        "union bank of india"
+      ]
+    },
+    {
+      "id": "UNITDSPR",
+      "name": "United Spirits Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE854D01024",
+      "exchange": "NSE",
+      "provider_symbol": "UNITDSPR.NS",
+      "aliases": [
+        "unitdspr",
+        "united spirits ltd.",
+        "united spirits"
+      ]
+    },
+    {
+      "id": "VBL",
+      "name": "Varun Beverages Ltd.",
+      "sector": "Fast Moving Consumer Goods",
+      "isin": "INE200M01039",
+      "exchange": "NSE",
+      "provider_symbol": "VBL.NS",
+      "aliases": [
+        "vbl",
+        "varun beverages ltd.",
+        "varun beverages"
+      ]
+    },
+    {
+      "id": "VAML",
+      "name": "Vedanta Aluminium Metal Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE1CDF01017",
+      "exchange": "NSE",
+      "provider_symbol": "VAML.NS",
+      "aliases": [
+        "vaml",
+        "vedanta aluminium metal ltd.",
+        "vedanta aluminium metal"
+      ]
+    },
+    {
+      "id": "VEDL",
+      "name": "Vedanta Ltd.",
+      "sector": "Metals & Mining",
+      "isin": "INE205A01025",
+      "exchange": "NSE",
+      "provider_symbol": "VEDL.NS",
+      "aliases": [
+        "vedl",
+        "vedanta ltd.",
+        "vedanta"
+      ]
+    },
+    {
+      "id": "VMM",
+      "name": "Vishal Mega Mart Ltd.",
+      "sector": "Consumer Services",
+      "isin": "INE01EA01019",
+      "exchange": "NSE",
+      "provider_symbol": "VMM.NS",
+      "aliases": [
+        "vmm",
+        "vishal mega mart ltd.",
+        "vishal mega mart"
+      ]
+    },
+    {
+      "id": "IDEA",
+      "name": "Vodafone Idea Ltd.",
+      "sector": "Telecommunication",
+      "isin": "INE669E01016",
+      "exchange": "NSE",
+      "provider_symbol": "IDEA.NS",
+      "aliases": [
+        "idea",
+        "vodafone idea ltd.",
+        "vodafone idea"
+      ]
+    },
+    {
+      "id": "VOLTAS",
+      "name": "Voltas Ltd.",
+      "sector": "Consumer Durables",
+      "isin": "INE226A01021",
+      "exchange": "NSE",
+      "provider_symbol": "VOLTAS.NS",
+      "aliases": [
+        "voltas",
+        "voltas ltd.",
+        "voltas"
+      ]
+    },
+    {
+      "id": "WAAREEENER",
+      "name": "Waaree Energies Ltd.",
+      "sector": "Capital Goods",
+      "isin": "INE377N01017",
+      "exchange": "NSE",
+      "provider_symbol": "WAAREEENER.NS",
+      "aliases": [
+        "waareeener",
+        "waaree energies ltd.",
+        "waaree energies"
+      ]
+    },
+    {
+      "id": "WIPRO",
+      "name": "Wipro Ltd.",
+      "sector": "Information Technology",
+      "isin": "INE075A01022",
+      "exchange": "NSE",
+      "provider_symbol": "WIPRO.NS",
+      "aliases": [
+        "wipro",
+        "wipro ltd.",
+        "wipro"
+      ]
+    },
+    {
+      "id": "YESBANK",
+      "name": "Yes Bank Ltd.",
+      "sector": "Financial Services",
+      "isin": "INE528G01035",
+      "exchange": "NSE",
+      "provider_symbol": "YESBANK.NS",
+      "aliases": [
+        "yesbank",
+        "yes bank ltd.",
+        "yes bank"
+      ]
+    },
+    {
+      "id": "ZYDUSLIFE",
+      "name": "Zydus Lifesciences Ltd.",
+      "sector": "Healthcare",
+      "isin": "INE010B01027",
+      "exchange": "NSE",
+      "provider_symbol": "ZYDUSLIFE.NS",
+      "aliases": [
+        "zyduslife",
+        "zydus lifesciences ltd.",
+        "zydus lifesciences"
+      ]
+    }
+  ]
+}
