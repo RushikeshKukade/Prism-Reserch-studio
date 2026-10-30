@@ -22,13 +22,14 @@ in the browser address. Read any terminal error before opening the page.
 python -m unittest discover -s tests -v
 python evaluate.py
 
-The evaluation report covers 35 automated test methods and 16 handcrafted
+The evaluation report covers 47 automated test methods and 16 handcrafted
 historical question cases. It does not establish unrestricted answer accuracy
 or investment performance. No live refresh runs as part of these checks.
 
 ## Scope and limitations
 
-- 200 NIFTY 200 companies have identity and saved market-data coverage.
+- Select official NIFTY 200 or NIFTY 500 membership. The saved snapshot covers 499 of 500 securities; BAGMANE is unavailable.
+- Explainable data screening, sector-composition diagnostics and a downloadable audit pack support the research workflow.
 - Verified financial-statement analysis covers TCS, Infosys and HCLTech.
 - Market data is a dated snapshot, not a guaranteed live exchange feed.
 - Research monitors are local browser rules, not scheduled notifications.

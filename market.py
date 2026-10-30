@@ -6,6 +6,7 @@ import statistics
 import threading
 import time
 from universe import get_universe, resolve_company
+from trading_universe import liquidity_metrics
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -17,7 +18,7 @@ CACHE=ROOT/'data/current_market.json'
 IST=timezone(timedelta(hours=5,minutes=30))
 SYMBOLS={'NIFTY50':('^NSEI','NIFTY 50','index'),'NIFTYIT':('^CNXIT','NIFTY IT','index'),'INDIAVIX':('^INDIAVIX','India VIX','volatility'),'TCS':('TCS.NS','TCS','equity'),'INFY':('INFY.NS','Infosys','equity'),'HCLTECH':('HCLTECH.NS','HCLTech','equity')}
 UNIVERSE=get_universe()
-SYMBOLS.update({c['id']:(c['provider_symbol'],c['name'],'equity') for c in UNIVERSE['companies'] if c['id'] not in SYMBOLS})
+SYMBOLS.update({c['id']:(c['provider_symbol'],c['name'],'reit' if c.get('series')=='RR' else 'equity') for c in UNIVERSE['companies'] if c['id'] not in SYMBOLS})
 _lock=threading.Lock()
 _joblock=threading.Lock()
 _job={'state':'idle','completed':0,'total':len(SYMBOLS),'errors':0}
@@ -73,7 +74,7 @@ def parse_chart(payload, key, now=None):
     high=prices[0];drawdown=0
     for value in prices:
         high=max(high,value);drawdown=min(drawdown,value/high-1)
-    return {'id':key,'symbol':symbol,'name':name,'kind':kind,'price':latest,'currency':'INR','unit':'volatility index points' if kind=='volatility' else 'index points' if kind=='index' else 'INR per share','provider_timestamp':datetime.fromtimestamp(ts,IST).isoformat(),'provider_epoch':ts,'freshness':observation_state(ts,now),'day_change_pct':(latest/previous-1)*100 if previous else None,'previous_close':previous,'completed_session':bars[-1]['date'],'completed_close':bars[-1]['close'],'sma50':sma50,'sma200':sma200,'momentum20_pct':(prices[-1]/prices[-21]-1)*100 if len(prices)>=21 else None,'volatility20_pct':statistics.stdev(returns[-20:])*math.sqrt(252)*100 if len(returns)>=20 else None,'max_drawdown_window_pct':drawdown*100,'trend':trend,'history_count':len(bars),'price_basis':'provider adjusted close' if use_adjusted else 'unadjusted close (adjustment data unavailable)','history':bars,'source_url':'https://finance.yahoo.com/quote/'+urllib.parse.quote(symbol,safe='')+'/history/','retrieved_at':now.isoformat()}
+    return {'id':key,'symbol':symbol,'name':name,'kind':kind,'price':latest,'currency':'INR','unit':'volatility index points' if kind=='volatility' else 'index points' if kind=='index' else 'INR per unit' if kind=='reit' else 'INR per share','provider_timestamp':datetime.fromtimestamp(ts,IST).isoformat(),'provider_epoch':ts,'freshness':observation_state(ts,now),'day_change_pct':(latest/previous-1)*100 if previous else None,'previous_close':previous,'completed_session':bars[-1]['date'],'completed_close':bars[-1]['close'],'sma50':sma50,'sma200':sma200,'momentum20_pct':(prices[-1]/prices[-21]-1)*100 if len(prices)>=21 else None,'volatility20_pct':statistics.stdev(returns[-20:])*math.sqrt(252)*100 if len(returns)>=20 else None,'max_drawdown_window_pct':drawdown*100,'trend':trend,'history_count':len(bars),'price_basis':'provider adjusted close' if use_adjusted else 'unadjusted close (adjustment data unavailable)','history':bars,'source_url':'https://finance.yahoo.com/quote/'+urllib.parse.quote(symbol,safe='')+'/history/','retrieved_at':now.isoformat()}
 
 
 def fetch_symbol(key):
@@ -118,6 +119,7 @@ def current_market(refresh=False,progress=None):
     result=copy.deepcopy(result);now=now_ist()
     company_map={c['id']:c for c in UNIVERSE['companies']}
     for row in result.get('series',[]):
+        row.update(liquidity_metrics(row.get('history', [])))
         row['freshness']=observation_state(row.get('provider_epoch'),now)
         row['refresh_error']=result.get('errors',{}).get(row['id'])
         row['sector']=company_map.get(row['id'],{}).get('sector','Benchmark')
@@ -128,7 +130,7 @@ def current_market(refresh=False,progress=None):
     result['universe_count']=UNIVERSE['count']
     result['fundamentals']=json.loads((ROOT/'data/recent_results.json').read_text(encoding='utf-8'))
     result['fundamentals']['needs_review']=(now.date()-datetime.fromisoformat(result['fundamentals']['verified_on']).date()).days>120
-    result['limitations']='Current NIFTY 200 constituents, not a historical survivorship-free universe. Public observations may be delayed or unavailable. Quote and indicator dates differ; freshness allows 96 elapsed hours, not a latest-session guarantee. Financial filings are verified for a subset only. No strategy backtest or order placement.'
+    result['limitations']='Current NIFTY 200/500 constituent snapshots, not historical survivorship-free universes. Public observations may be delayed or unavailable. Quote and indicator dates differ; freshness allows 96 elapsed hours, not a latest-session guarantee. Financial filings are verified for a subset only. No strategy backtest or order placement.'
     return result
 
 

@@ -1,6 +1,6 @@
 # PRISM Research Studio - assessment concept
 
-An India-only, evidence-first market and research prototype covering **200 Indian companies from the official NIFTY 200 list**, with verified filing-based financial analysis for **TCS, Infosys and HCLTech**. It helps an analyst answer a financial question without losing the reporting period, metric definition or source behind a number.
+An India-only, evidence-first market and research prototype covering **official NIFTY 200 and NIFTY 500 universes**, with verified filing-based financial analysis for **TCS, Infosys and HCLTech**. It helps an analyst answer a financial question without losing the reporting period, metric definition or source behind a number.
 
 **Historical scope:** consolidated FY2023 and FY2024 revenue and company-reported operating profit/EBIT; derived operating margins, year-on-year growth and margin changes. Indian financial years end on 31 March. Values use INR crore and Indian digit grouping. India-focused means India-listed companies; their consolidated revenues include international operations.
 
@@ -62,7 +62,7 @@ with at most 32 entries; changed evidence invalidates the cache. There are no au
 retries. Missing keys, insufficient evidence, invalid references, incomplete responses,
 refusals and API errors preserve the deterministic answer.
 
-**Validation status:** 10 offline adapter tests supplement the 25 existing test methods.
+**Validation status:** 10 offline adapter tests are included in the 47-test suite.
 They use mocked responses and test the integration contract, not live model quality.
 No live OpenAI request has been verified for this submission because no key was
 configured. Before presenting generated results, run a real request and review its
@@ -76,23 +76,40 @@ filings, modify the verified table or fill missing coverage.
 Reference: https://developers.openai.com/api/docs/guides/structured-outputs
 Model: https://developers.openai.com/api/docs/models/gpt-4.1-mini
 
-## Expanded company universe
+## Trading universes and research audit
 
-The Company explorer now covers **200 companies across 18 official sectors**, retrieved from the [official NIFTY 200 constituent CSV](https://www.niftyindices.com/IndexConstituent/ind_nifty200list.csv) on 30 October 2026. `data/universe.json` preserves company names, NSE symbols, sector labels, ISINs, retrieval timestamp and a SHA-256 hash of the downloaded source. Current membership is not a point-in-time history; do not use it to claim survivorship-free strategy results.
+Choose **NIFTY 200 (200 securities)** or **NIFTY 500 (500 securities)**. These are official index constituents, not a custom market-cap ranking. Official CSV snapshots were retrieved on 30 October 2026 and are preserved in `data/constituents/`, with source hashes in the normalized JSON files.
 
-**Coverage is deliberately explicit:** all 200 have issuer identity and dated market observations in the saved snapshot; verified annual and quarterly financial-statement figures remain limited to the original three companies. The explorer's coverage columns, company profile and bot expose that gap. No revenue or margin is filled from price data, inferred from peers, or silently copied from another issuer. Banks and industrial companies require different financial definitions; price coverage does not make cross-sector operating margins comparable.
+The NIFTY 500 source contained 501 rows including an explicitly labelled DUMMYHEG placeholder. The normalization excludes that placeholder and records it in the audit. Real non-EQ constituents are retained in membership, but excluded from the EQ research screen. Current membership is not a point-in-time historical universe.
 
-The explorer supports name/NSE-symbol search, sector/coverage filters, sorting, 25-row pages, research links and CSV export of the currently filtered universe. Company-context, chart and monitor selectors recognise the full list. For a company without verified filings, the context card shows blanks and a financial-evidence gap; price-based research and manual price-momentum rules remain available. Example: `Show current price for Reliance`. `Show latest revenue for Reliance` explicitly declines until its filing is verified.
+The saved refresh loaded **499 of 500 securities plus three benchmarks**. BAGMANE returned a provider error; missing data is shown rather than fabricated. Verified financial-statement analysis still covers only **TCS, Infosys and HCLTech**.
 
-Refresh architecture:
+### Decision-support features
 
-- `GET /api/universe` exposes the official membership snapshot.
-- `GET /api/current` returns compact summaries without the full price histories.
-- `GET /api/history/<NSE-symbol>` returns one cached history on demand; encoded symbols such as `M%26M` are supported.
-- `POST /api/current/refresh` starts a single background job and returns HTTP 202 with job status. `GET /api/refresh-status` reports completed/total/error counts. Cached observations remain readable during the batch. Only one job runs at a time, requests are limited to six workers with a small per-request pause, and a completed attempt is throttled for one minute. Failed rows retain their original timestamps.
-- `python universe.py` refreshes and validates membership. Restart the app after membership changes so its provider map reloads. `python market.py` refreshes the full saved price snapshot and reports batch progress. These are explicit commands, not scheduled services.
+- Select minimum completed observations, share price and average traded value. Default history is 200 observations. The turnover proxy uses unadjusted close times volume over the last 20 completed observations, in INR crore; missing volume is not backfilled.
+- Inspect every exclusion: non-EQ series, missing/stale data, failed refresh, short history or insufficient liquidity. Passing means data eligibility, not investment quality or broker eligibility.
+- Compare sector composition before and after screening. Shares are counts of securities, not portfolio or index weights. Exclusion reason counts overlap.
+- Search, filter, sort, paginate and export the filtered list to CSV.
+- **Download research pack** creates one Markdown file containing a readable brief, applied settings, display filters, source timestamps, full selected-universe evidence and a SHA-256 fingerprint. The fingerprint detects report changes; it does not prove source accuracy. No model or API key is needed.
 
-The 35 test methods include membership count/uniqueness, provider-map coverage, constituent validation, symbol/name resolution, refusing unverified financials and preventing one issuer's filing from being attached to another company's price answer. The separate 16 question cases remain historical-engine checks. Live-provider retrieval was checked separately: 203/203 series loaded without errors in the development refresh; this is not an ongoing availability guarantee.
+### Reproduction
+
+`GET /api/trading-universe?index=nifty500&min_history=200&min_price=0&min_turnover_crore=0`
+returns the full report, diagnostics and fingerprint. `GET /api/universe?index=nifty200` returns membership only. `/api/current` supplies compact market summaries and `/api/history/<NSE-symbol>` supplies one cached history.
+
+Run `python universe.py --index all` to explicitly refresh both lists, then restart the app to reload the provider map. Run `python market.py` to refresh prices. The UI refresh is a background job with six workers, visible progress, retained original timestamps on failures and a one-minute throttle. Refreshes are manual, not scheduled.
+
+Run `python evaluate.py`: **47 automated test methods** plus 16 historical question cases. Tests cover missing and stale data, threshold boundaries, source normalization, membership isolation, sector-share arithmetic, overlapping exclusions, fingerprint sensitivity and mocked AI failures. They do not demonstrate investment performance or unrestricted LLM accuracy.
+
+### Three-minute interview demo
+
+1. State the problem: an analyst needs a shortlist whose data gaps and selection assumptions are visible.
+2. Switch between NIFTY 200 and 500; explain membership versus verified financial coverage.
+3. Apply a traded-value threshold, inspect exclusions, and compare sector composition.
+4. Open a supported company question, inspect its filing and calculation, then download a research pack.
+5. Explain production priorities: licensed point-in-time data, exchange-calendar freshness, broader filing verification, user testing and independently reviewed AI evaluation.
+
+This expanded prototype exceeds the original two-to-three-hour trial scope. Be candid about time spent and AI assistance. Present the small core workflow first, and describe later additions as extensions.
 
 ## Product structure
 

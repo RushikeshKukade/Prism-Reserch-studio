@@ -5,7 +5,7 @@ const MONITOR_KEY='prism-assessment-monitor-rules-v1';
 const MONITOR_METRICS={revenue_yoy_pct:'Quarterly revenue growth',reported_margin_pct:'Reported operating margin',momentum20_pct:'20-session price change'};
 const STUDIO_VIEWS={
   research:['Ask research','RESEARCH / INDIA','From a question<br>to a clearer view<span>.</span>','Explore what changed, inspect the evidence, and decide what to watch next.'],
-  universe:['Company explorer','UNIVERSE / NIFTY 200','Broaden the universe.<br>Keep the evidence<span>.</span>','Search 200 Indian companies across sectors, with explicit price and financial-data coverage.'],
+  universe:['Trading universes','UNIVERSES / NIFTY 200 & 500','Choose the universe.<br>Check the data<span>.</span>','Build a research shortlist from official constituents, liquidity and data coverage.'],
   current:['Market context','MARKETS / INDIA','The market around<br>your research<span>.</span>','Dated observations provide context. Company evidence stays a separate layer.'],
   dashboard:['Company fundamentals','COMPANIES / HISTORICAL ANALYSIS','Put the numbers<br>in perspective<span>.</span>','Compare annual performance on explicit periods and disclosed accounting bases.'],
   monitors:['Your monitors','MONITORS / LOCAL RULES','Know what you<br>want to watch<span>.</span>','Turn a research question into an explicit, checkable condition.'],
@@ -22,17 +22,21 @@ function updateStudioHeading(view){
 }
 function initStudio(){
   const companies=metadata.universe.companies;
-  $('workspace-coverage').innerHTML=`<span>${companies.length} companies</span><span>${new Set(companies.map(c=>c.sector)).size} sectors</span><span>Verified filing analysis: ${metadata.data.companies.length} companies</span>`;
+  $('workspace-coverage').innerHTML=`<span>NIFTY 200 / NIFTY 500</span><span>${companies.length} listed securities</span><span>${new Set(companies.map(c=>c.sector)).size} sectors</span><span>Verified filing analysis: ${metadata.data.companies.length} companies</span>`;
   const options=companies.map(c=>`<option value="${esc(c.id)}">${esc(c.name)} (${esc(c.id)})</option>`).join('');
   $('context-company').innerHTML=options;$('context-company').value='INFY';
   $('monitor-company').innerHTML=options;$('monitor-company').value='INFY';
   $('current-symbol').innerHTML='<option value="NIFTY50">NIFTY 50</option><option value="NIFTYIT">NIFTY IT</option><option value="INDIAVIX">India VIX</option>'+options;
   $('universe-nav-count').textContent=companies.length;
   $('universe-sector').innerHTML='<option value="">All sectors</option>'+[...new Set(companies.map(c=>c.sector))].sort().map(sector=>`<option>${esc(sector)}</option>`).join('');
-  ['universe-search','universe-sector','universe-coverage-filter','universe-sort'].forEach(id=>$(id).addEventListener(id==='universe-search'?'input':'change',()=>{explorerPage=1;renderUniverseExplorer();}));
+  ['universe-search','universe-sector','universe-coverage-filter','universe-eligibility','universe-sort'].forEach(id=>$(id).addEventListener(id==='universe-search'?'input':'change',()=>{explorerPage=1;renderUniverseExplorer();}));
   $('universe-previous').onclick=()=>{explorerPage=Math.max(1,explorerPage-1);renderUniverseExplorer();};
   $('universe-next').onclick=()=>{explorerPage++;renderUniverseExplorer();};
   $('export-universe').onclick=exportUniverse;
+  $('export-research-pack').onclick=exportResearchPack;
+  $('universe-index').onchange=()=>{explorerPage=1;updateUniverseSectors();loadUniverseExplorer();};
+  $('universe-screen-form').onsubmit=event=>{event.preventDefault();explorerPage=1;loadUniverseExplorer();};
+  updateUniverseSectors();
   $('context-company').onchange=loadResearchContext;
   $('monitor-form').onsubmit=saveMonitor;
   $('check-monitors').onclick=loadMonitors;
@@ -124,35 +128,91 @@ async function loadMonitors(){
   });
 }
 
-let explorerSnapshot=null,explorerPage=1;
+
+let explorerSnapshot=null,explorerPage=1,explorerRequest=0;
 const EXPLORER_PAGE_SIZE=25;
+function updateUniverseSectors(){
+  const u=metadata.universes[$('universe-index').value];
+  $('universe-sector').innerHTML='<option value="">All sectors</option>'+[...new Set(u.companies.map(c=>c.sector))].sort().map(sector=>'<option>'+esc(sector)+'</option>').join('');
+}
 async function loadUniverseExplorer(){
-  try{explorerSnapshot=await api('/api/current');renderUniverseExplorer();}
-  catch(error){$('universe-body').innerHTML='<tr><td colspan="6">Market observations unavailable. Membership records remain in the downloaded project.</td></tr>';}
+  const request=++explorerRequest;
+  explorerSnapshot=null;
+  ['universe-coverage','universe-diagnostics','universe-source','universe-warnings','universe-page-label'].forEach(id=>$(id).textContent='');
+  $('export-research-pack').disabled=true;
+  $('export-universe').disabled=true;
+  $('universe-body').innerHTML='<tr><td colspan="7">Checking selected universe…</td></tr>';
+  const query=new URLSearchParams({index:$('universe-index').value,min_history:$('screen-history').value,min_price:$('screen-price').value,min_turnover_crore:$('screen-turnover').value});
+  try{
+    const data=await api('/api/trading-universe?'+query);
+    if(request!==explorerRequest)return;
+    explorerSnapshot=data;renderUniverseExplorer();$('export-universe').disabled=false;$('export-research-pack').disabled=false;
+  }catch(error){
+    if(request!==explorerRequest)return;
+    explorerSnapshot=null;
+    $('universe-body').innerHTML='<tr><td colspan="7">'+esc(error.message)+'</td></tr>';
+    $('universe-coverage').innerHTML='';
+  }
 }
 function filteredUniverse(){
-  const observations=new Map((explorerSnapshot?.series||[]).map(r=>[r.id,r]));
-  const filings=new Set((explorerSnapshot?.fundamentals.companies||[]).map(c=>c.id));
-  const term=$('universe-search').value.trim().toLowerCase(),sector=$('universe-sector').value,coverage=$('universe-coverage-filter').value;
-  const rows=metadata.universe.companies.map(c=>({...c,observation:observations.get(c.id),filing:filings.has(c.id)})).filter(c=>(!term||(c.name+' '+c.id).toLowerCase().includes(term))&&(!sector||c.sector===sector)&&(!coverage||coverage==='price'&&c.observation||coverage==='missing'&&!c.observation||coverage==='filing'&&c.filing));
-  const sort=$('universe-sort').value;
-  return rows.sort((a,b)=>sort==='name'?a.name.localeCompare(b.name):((b.observation?.[sort==='day'?'day_change_pct':'momentum20_pct']??-Infinity)-(a.observation?.[sort==='day'?'day_change_pct':'momentum20_pct']??-Infinity)));
+  if(!explorerSnapshot)return [];
+  const term=$('universe-search').value.trim().toLowerCase(),sector=$('universe-sector').value,coverage=$('universe-coverage-filter').value,eligibility=$('universe-eligibility').value;
+  const rows=explorerSnapshot.rows.filter(c=>(!term||(c.name+' '+c.id).toLowerCase().includes(term))&&(!sector||c.sector===sector)&&(!coverage||coverage==='price'&&c.observation||coverage==='missing'&&!c.observation||coverage==='filing'&&c.filing)&&(!eligibility||eligibility==='pass'&&c.screen.eligible||eligibility==='excluded'&&!c.screen.eligible));
+  const sort=$('universe-sort').value,metric=sort==='day'?'day_change_pct':sort==='turnover'?'turnover20_crore':'momentum20_pct';
+  return rows.sort((a,b)=>sort==='name'?a.name.localeCompare(b.name):((b.observation?.[metric]??-Infinity)-(a.observation?.[metric]??-Infinity)));
 }
 function renderUniverseExplorer(){
   if(!explorerSnapshot)return;
-  const universe=metadata.universe,observations=explorerSnapshot.series.filter(r=>r.kind==='equity');
-  $('universe-coverage').innerHTML=`<div><strong>${universe.count}</strong><span>official companies</span></div><div><strong>${new Set(universe.companies.map(c=>c.sector)).size}</strong><span>sectors</span></div><div><strong>${observations.length}</strong><span>price observations</span></div><div><strong>${explorerSnapshot.fundamentals.companies.length}</strong><span>verified quarterly filings</span></div>`;
+  const u=explorerSnapshot.universe,c=explorerSnapshot.counts;
+  $('universe-coverage').innerHTML=[[c.constituents,u.name+' securities'],[c.price_available,'price observations'],[c.eligible,'pass selected data screen'],[c.verified_filings,'verified quarterly filings']].map(([value,label])=>'<div><strong>'+value+'</strong><span>'+esc(label)+'</span></div>').join('');
+  $('universe-warnings').innerHTML=u.warnings.map(w=>'<p class="table-note">'+esc(w)+'</p>').join('');
   const rows=filteredUniverse(),pages=Math.max(1,Math.ceil(rows.length/EXPLORER_PAGE_SIZE));explorerPage=Math.min(explorerPage,pages);
   const start=(explorerPage-1)*EXPLORER_PAGE_SIZE;
-  $('universe-body').innerHTML=rows.slice(start,start+EXPLORER_PAGE_SIZE).map(c=>{const r=c.observation;return `<tr><td><strong>${esc(c.name)}</strong><br><small>NSE: ${esc(c.id)}</small></td><td>${esc(c.sector)}</td><td>${r?'₹'+fmtPrice(r.price):'Unavailable'}<br><small>${r?esc(ist(r.provider_timestamp)):'No provider observation'}</small></td><td>${r?pct(r.momentum20_pct):'—'}<br><small>${r?'Through '+esc(r.completed_session):''}</small></td><td><span class="coverage-pill ${r?'has-price':'missing-price'}">${r?r.freshness==='recent_observation'?'Dated price':'Stale price':'Price missing'}</span><span class="coverage-pill ${c.filing?'has-filing':'missing-price'}">${c.filing?'Filing verified':'Filing not verified'}</span></td><td><button class="research-button" data-explore-company="${esc(c.id)}">Research ↗</button></td></tr>`;}).join('')||'<tr><td colspan="6">No company matches these filters.</td></tr>';
+  $('universe-body').innerHTML=rows.slice(start,start+EXPLORER_PAGE_SIZE).map(c=>{
+    const r=c.observation;
+    return '<tr><td><strong>'+esc(c.name)+'</strong><br><small>NSE: '+esc(c.id)+' · '+esc(c.series)+'</small></td><td>'+esc(c.sector)+'</td><td>'+(r?'₹'+fmtPrice(r.price):'Unavailable')+'<br><small>'+(r?esc(ist(r.provider_timestamp)):'No provider observation')+'</small></td><td>'+(r?pct(r.momentum20_pct):'—')+'<br><small>'+(r?'Through '+esc(r.completed_session):'')+'</small></td><td>'+(r?.turnover20_crore!=null?r.turnover20_crore.toFixed(2):'Unavailable')+'<br><small>20 completed observations</small></td><td><span class="coverage-pill '+(c.screen.eligible?'has-price':'missing-price')+'">'+(c.screen.eligible?'Passes data screen':'Excluded / needs data')+'</span><span class="coverage-pill '+(c.filing?'has-filing':'missing-price')+'">'+(c.filing?'Filing verified':'Filing not verified')+'</span><small>'+esc(c.screen.reasons.join('; '))+'</small></td><td><button class="research-button" data-explore-company="'+esc(c.id)+'">Research ↗</button></td></tr>';
+  }).join('')||'<tr><td colspan="7">No security matches these filters.</td></tr>';
   $('universe-body').querySelectorAll('[data-explore-company]').forEach(button=>button.onclick=()=>{$('context-company').value=button.dataset.exploreCompany;lastResult=null;$('result').innerHTML='';setView('research');});
-  $('universe-page-label').textContent=rows.length?`${start+1}–${Math.min(start+EXPLORER_PAGE_SIZE,rows.length)} of ${rows.length} companies · page ${explorerPage}/${pages}`:'0 matching companies';
+  $('universe-page-label').textContent=rows.length?(start+1)+'–'+Math.min(start+EXPLORER_PAGE_SIZE,rows.length)+' of '+rows.length+' securities · page '+explorerPage+'/'+pages:'0 matching securities';
   $('universe-previous').disabled=explorerPage===1;$('universe-next').disabled=explorerPage===pages;
-  $('universe-source').innerHTML=`Universe: <a href="${esc(universe.source_url)}" target="_blank" rel="noopener noreferrer">official NIFTY 200 list ↗</a> · retrieved ${esc(ist(universe.retrieved_at))}. ${esc(universe.membership_note)}`;
+  $('universe-source').innerHTML='Universe: <a href="'+esc(u.source_url)+'" target="_blank" rel="noopener noreferrer">official '+esc(u.name)+' list ↗</a> · retrieved '+esc(ist(u.retrieved_at))+'. '+esc(u.membership_note);
+  $('universe-method').textContent=explorerSnapshot.methodology;
+  const diag=explorerSnapshot.diagnostics;
+  $('universe-diagnostics').innerHTML='<p>'+esc(diag.note)+'</p><h3>Why securities were excluded</h3>'+ (diag.exclusion_reasons.length?'<ul>'+diag.exclusion_reasons.map(r=>'<li>'+r.count+' · '+esc(r.reason)+'</li>').join('')+'</ul>':'<p>No exclusions under the applied settings.</p>')+'<h3>Sector balance before and after screening</h3><div class="table-wrap"><table><thead><tr><th>Sector</th><th>Universe count</th><th>Passed count</th><th>Universe share</th><th>Passed share</th></tr></thead><tbody>'+diag.sector_composition.map(r=>'<tr><td>'+esc(r.sector)+'</td><td>'+r.universe_count+'</td><td>'+r.eligible_count+'</td><td>'+r.universe_pct.toFixed(1)+'%</td><td>'+(r.eligible_pct===null?'—':r.eligible_pct.toFixed(1)+'%')+'</td></tr>').join('')+'</tbody></table></div><p class="table-note">Report fingerprint: '+esc(explorerSnapshot.report_sha256)+'</p>';
+
 }
 function exportUniverse(){
-  const rows=filteredUniverse(),headers=['Company','NSE symbol','Sector','ISIN','Price INR','Provider timestamp','20-session change percent','50-session MA','200-session MA','20-return annualised volatility percent','Price status','Quarterly filing verified','Price source'];
-  const data=rows.map(c=>{const r=c.observation;return [c.name,c.id,c.sector,c.isin,r?.price??'',r?.provider_timestamp??'',r?.momentum20_pct??'',r?.sma50??'',r?.sma200??'',r?.volatility20_pct??'',r?.freshness||'unavailable',c.filing?'yes':'no',r?.source_url||''];});
-  const csv='\ufeff'+[headers,...data].map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');
-  download('prism-nifty200-company-data.csv',csv,'text/csv;charset=utf-8');
+  if(!explorerSnapshot)return;
+  const rows=filteredUniverse(),u=explorerSnapshot.universe,p=explorerSnapshot.parameters;
+  const headers=['Universe','Company','NSE symbol','Series','Sector','ISIN','Price INR','Provider timestamp','20-session change percent','Average traded value 20 observations INR crore','History count','Passes research screen','Exclusion reasons','Minimum history','Minimum price INR','Minimum traded value INR crore','Quarterly filing verified','Constituent retrieved at','Constituent source','Price source'];
+  const data=rows.map(c=>{const r=c.observation;return [u.name,c.name,c.id,c.series,c.sector,c.isin,r?.price??'',r?.provider_timestamp??'',r?.momentum20_pct??'',r?.turnover20_crore??'',r?.history_count??'',c.screen.eligible?'yes':'no',c.screen.reasons.join('; '),p.min_history,p.min_price,p.min_turnover_crore,c.filing?'yes':'no',u.retrieved_at,u.source_url,r?.source_url||''];});
+  const csv='﻿'+[headers,...data].map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');
+  download('prism-'+u.id+'-trading-universe.csv',csv,'text/csv;charset=utf-8');
+}
+
+function exportResearchPack(){
+  if(!explorerSnapshot)return;
+  const d=explorerSnapshot,u=d.universe,rows=filteredUniverse();
+  // One file keeps the human-readable brief and complete machine-readable evidence together.
+  const lines=['# '+u.name+' research screening brief','',
+    'Generated: '+new Date().toISOString(),
+    'Purpose: create an inspectable India research shortlist; no buy/sell recommendation.',
+    '', '## Applied settings', JSON.stringify(d.parameters),
+    '', '## Coverage',`${d.counts.constituents} constituents; ${d.counts.price_available} price observations; ${d.counts.eligible} pass the data screen; ${d.counts.verified_filings} verified filings.`,
+    `${rows.length} securities match the current display filters.`,
+    '', '## Interpretation',d.diagnostics.note,
+    ...d.diagnostics.exclusion_reasons.map(r=>`- ${r.count}: ${r.reason}`),
+    '', '## Next research steps',
+    '- Inspect excluded securities and provider errors before widening the screen.',
+    '- Review sector composition; a liquidity filter can change the sector mix.',
+    '- Verify filings for shortlisted companies before making fundamental comparisons.',
+    '', '## Sources and limitations',u.source_url,'Retrieved: '+u.retrieved_at,
+    'Source SHA-256: '+u.source_sha256,u.membership_note,d.methodology,
+    ...(u.warnings||[]),
+    '', '## Reproducible evidence',
+    'Report SHA-256: '+d.report_sha256,
+    'Hash definition: SHA-256 of the UTF-8 bytes of report.canonical_report_json. This original server serialization is preserved to avoid browser number-format changes. Timestamps are part of the evidence.',
+    'The JSON below includes all selected-universe rows, applied settings, source metadata, and explicit display filters. It contains no API credentials.',
+    '```json',JSON.stringify({report:d,display_filters:{search:$('universe-search').value,sector:$('universe-sector').value,coverage:$('universe-coverage-filter').value,eligibility:$('universe-eligibility').value,sort:$('universe-sort').value},displayed_symbols:rows.map(r=>r.id)},null,2),'```'];
+  download('prism-'+u.id+'-research-pack.md',lines.join('\n'),'text/markdown;charset=utf-8');
 }
